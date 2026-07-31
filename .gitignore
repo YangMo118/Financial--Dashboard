@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# Local dev server
+StartServer.app/
+start-server.sh
+
+# Cloud deployment copy (duplicate of root files)
+金融数据面板/
+
+# Node
+node_modules/
