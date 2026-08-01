@@ -1125,7 +1125,11 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 
     <div class="manual-block">
       <div class="manual-h2" data-i18n="十九、更新记录">十九、更新记录</div>
-      <p><strong>2026.8.1（v1.1.8）</strong></p>
+      <p><strong>2026.8.1（v1.1.9）</strong></p>
+      <ul class="manual-ul">
+        <li><strong>基金持仓新增盘中实时估值：</strong>交易时段内，「自选基金涨跌」板块的净值列显示盘中实时估值（带"估"标记和估值时间），持仓盈亏、持仓汇总卡片（总市值/总盈亏/综合收益率）同步按估值计算，盈亏随盘中估值实时变动；收盘后自动回退到官方每日净值。非交易时段保持原有行为。</li>
+      </ul>
+      <p style="margin-top:12px"><strong>2026.8.1（v1.1.8）</strong></p>
       <ul class="manual-ul">
         <li><strong>整站中英文切换：</strong>导航栏的「中 / EN」按钮升级为一键切换整个网页语言。所有界面元素（导航标签、按钮、卡片标题、表格表头、图表标题、市场状态、说明书章节标题、Toast 提示等）均支持中英文切换，语言选择自动保存，下次打开保持。说明书正文仍为中文，后续版本可继续补充翻译。</li>
         <li><strong>修复全局搜索"苹果/Apple"搜不到的问题：</strong>搜索"苹果"时，东方财富接口返回的美股期权衍生品（如"苹果26年10月购10000"）此前被误归类为股票并排在结果前列，真正的"苹果 AAPL"被挤到后面，造成"搜不到"的体验。现已过滤期权/衍生品噪音（TypeUS 13-18、HKDerivative 等），期货保留在"期货"分组末尾。</li>
@@ -1477,6 +1481,10 @@ var I18N = {
   '主题模式':'Theme Mode','深色':'Dark','浅色':'Light','跟随系统':'Follow System',
   '自选股票设置':'My Stock Settings','自选基金设置':'My Fund Settings','价格提醒':'Price Alerts','通知设置':'Notification Settings',
   '已保存':'Saved','已删除':'Deleted','已清除':'Cleared',
+  '总投入':'Invested','总市值':'Value','总盈亏':'P/L','综合收益率':'Total Return',
+  '详情':'Details','估值':'Est.','盘中实时估值':'Intraday estimate','盘中估值':'intraday est.',
+  '* 盘中实时估值，收盘后以官方净值为准':'* Intraday estimate; official NAV prevails after market close',
+  '按最近一个交易日官方净值计算':'Based on latest official NAV',
   /* 说明书标题 */
   '一、这是什么？':'1. What is this?',
   '二、九大板块说明':'2. Module Guide',
@@ -6383,12 +6391,19 @@ function loadSection8(){
         var accNav = parseFloat(fd.ACCNAV);
         var navChg = parseFloat(fd.NAVCHGRT);
         navDate = fd.PDATE || navDate;
+        // Intraday estimate (盘中实时估值): GSZ/GSZZL/GZTIME — null outside trading hours
+        var estNav = parseFloat(fd.GSZ);
+        var estChg = parseFloat(fd.GSZZL);
+        var estTime = fd.GZTIME || '';
         var idxChgVal = null;
         if(fund._idxQuote){ idxChgVal = fund._idxQuote.f3; }
         renderData.push({
           name:fd.SHORTNAME, code:fd.FCODE, idxName:fund.idxName||'--',
           nav:nav, accNav:accNav, pdate:fd.PDATE||'--',
-          navChg:navChg, idxChg:idxChgVal, _fund:fund
+          navChg:navChg, idxChg:idxChgVal, _fund:fund,
+          estNav:isFinite(estNav) ? estNav : null,
+          estChg:isFinite(estChg) ? estChg : null,
+          estTime:estTime
         });
         chartNames.push(fd.SHORTNAME.length>12 ? fd.SHORTNAME.substring(0,12)+'..' : fd.SHORTNAME);
         chartChanges.push(navChg);
@@ -6723,20 +6738,25 @@ function fetchFundAssetAllocation(fcode){
 function renderFundTable5(data){
   var html = '';
   data.forEach(function(d){
-    var cls = fmtColor(d.navChg);
+    // Effective NAV: use intraday estimate when available (trading hours), else official NAV
+    var effNav = (d.estNav !== null && d.estNav > 0) ? d.estNav : d.nav;
+    var effChg = (d.estChg !== null) ? d.estChg : d.navChg;
+    var isEst = (d.estNav !== null && d.estNav > 0);
+    var cls = fmtColor(effChg);
+    var navDisplay = fmt(effNav,4) + (isEst ? '<span style="color:#d29922;font-size:10px" title="盘中实时估值">估</span>' : '');
     var idxChg = '';
     if(d.idxChg !== null){
       idxChg = '<span class="'+fmtColor(d.idxChg)+'">'+fmtSign(d.idxChg)+fmt(d.idxChg)+'%</span>';
     } else {
       idxChg = '<span class="flat">--</span>';
     }
-    // Holdings P/L
+    // Holdings P/L — computed against effective NAV (estimate during trading hours)
     var holdingsHtml = '--';
     var f = d._fund;
-    if(f && f.holdings && d.nav){
+    if(f && f.holdings && effNav){
       var h = migrateHoldings(f.holdings);
       if(h && h.batches){
-        var bh = calcBatchesHoldings(h.batches, d.nav);
+        var bh = calcBatchesHoldings(h.batches, effNav);
         if(bh){
           var plCls = fmtColor(bh.pl);
           holdingsHtml = '<span class="'+plCls+'" style="font-weight:600">'+fmtSign(bh.pl)+fmt(bh.pl)+'</span><br><span style="color:var(--text2);font-size:10px">'+fmtSign(bh.plPct)+fmt(bh.plPct)+'% · 均价'+fmt(bh.avgCost,4)+'</span>';
@@ -6744,13 +6764,13 @@ function renderFundTable5(data){
       }
     }
     html += '<tr>'+
-      '<td><span class="fund-name" onclick="jumpToFundKLine(\''+d.code+'\')" title="点击查看K线图">'+escHtml(d.name)+'</span> <a href="javascript:void(0)" onclick="showFundDetail(\''+d.code+'\',\''+escSq(d.name)+'\')" style="font-size:10px;color:var(--blue);text-decoration:none">详情</a></td>'+
+      '<td><span class="fund-name" onclick="jumpToFundKLine(\''+d.code+'\')" title="点击查看K线图">'+escHtml(d.name)+'</span> <a href="javascript:void(0)" onclick="showFundDetail(\''+d.code+'\',\''+escSq(d.name)+'\')" style="font-size:10px;color:var(--blue);text-decoration:none">'+t('详情')+'</a></td>'+
       '<td><span class="fund-code">'+escHtml(d.code)+'</span></td>'+
       '<td>'+escHtml(d.idxName)+'</td>'+
-      '<td>'+fmt(d.nav,4)+'</td>'+
+      '<td>'+navDisplay+'</td>'+
       '<td>'+fmt(d.accNav,4)+'</td>'+
-      '<td>'+d.pdate+'</td>'+
-      '<td><span class="'+cls+'" style="font-weight:600">'+fmtSign(d.navChg)+fmt(d.navChg)+'%</span></td>'+
+      '<td>'+d.pdate+(isEst&&d.estTime?' <span style="color:var(--text2);font-size:10px">估'+d.estTime+'</span>':'')+'</td>'+
+      '<td><span class="'+cls+'" style="font-weight:600">'+fmtSign(effChg)+fmt(effChg)+'%</span></td>'+
       '<td>'+idxChg+'</td>'+
       '<td>'+holdingsHtml+'</td>'+
       '</tr>';
@@ -6761,18 +6781,21 @@ function renderFundTable5(data){
 
 /* Portfolio P&L summary for Section 8 */
 function renderPortfolioSummary8(data){
-  var totalCost = 0, totalValue = 0, hasHoldings = false;
+  var totalCost = 0, totalValue = 0, hasHoldings = false, anyEst = false;
   data.forEach(function(d){
     var f = d._fund;
-    if(f && f.holdings && d.nav){
-      var h = migrateHoldings(f.holdings);
-      if(h && h.batches){
-        var bh = calcBatchesHoldings(h.batches, d.nav);
-        if(bh){
-          totalCost += bh.totalCost;
-          totalValue += bh.value;
-          hasHoldings = true;
-        }
+    if(!f || !f.holdings) return;
+    // Use intraday estimate when available
+    var effNav = (d.estNav !== null && d.estNav > 0) ? d.estNav : d.nav;
+    if(!effNav) return;
+    if(d.estNav !== null && d.estNav > 0) anyEst = true;
+    var h = migrateHoldings(f.holdings);
+    if(h && h.batches){
+      var bh = calcBatchesHoldings(h.batches, effNav);
+      if(bh){
+        totalCost += bh.totalCost;
+        totalValue += bh.value;
+        hasHoldings = true;
       }
     }
   });
@@ -6785,16 +6808,18 @@ function renderPortfolioSummary8(data){
   var totalPL = totalValue - totalCost;
   var totalPct = totalCost ? (totalPL / totalCost * 100) : 0;
   var plCls = totalPL >= 0 ? 'up' : 'down';
+  var estTag = anyEst ? ' <span style="font-size:10px;color:#d29922">(盘中估值)</span>' : '';
   var items = [
-    {label:'总投入', val:'¥'+fmt(totalCost,0), cls:'flat'},
-    {label:'总市值', val:'¥'+fmt(totalValue,0), cls:'flat'},
-    {label:'总盈亏', val:(totalPL>=0?'+':'')+fmt(totalPL,0), cls:plCls},
-    {label:'综合收益率', val:(totalPct>=0?'+':'')+fmt(totalPct)+'%', cls:plCls}
+    {label: t('总投入')+'', val:'¥'+fmt(totalCost,0), cls:'flat'},
+    {label: t('总市值')+(anyEst?'*':''), val:'¥'+fmt(totalValue,0), cls:'flat'},
+    {label: t('总盈亏')+(anyEst?'*':''), val:(totalPL>=0?'+':'')+fmt(totalPL,0), cls:plCls},
+    {label: t('综合收益率')+(anyEst?'*':''), val:(totalPct>=0?'+':'')+fmt(totalPct)+'%', cls:plCls}
   ];
   var html = '';
   items.forEach(function(it){
     html += '<div class="heat-metric"><div class="heat-label">'+it.label+'</div><div class="heat-value '+it.cls+'">'+it.val+'</div></div>';
   });
+  html += '<div style="grid-column:1/-1;font-size:10px;color:var(--text2)">'+(anyEst ? '* 盘中实时估值，收盘后以官方净值为准' : '按最近一个交易日官方净值计算')+'</div>';
   summaryDiv.innerHTML = html;
   summaryDiv.style.display = 'grid';
 }
