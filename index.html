@@ -560,11 +560,11 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   </div>
   <div class="two-col">
     <div class="card">
-      <div class="card-title">大盘主力资金流向趋势（近30日） <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="单位：亿元">单位：亿元</span></div>
+      <div class="card-title"><span data-i18n="大盘主力资金流向趋势（近30日）">大盘主力资金流向趋势（近30日）</span> <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="单位：亿元">单位：亿元</span></div>
       <div id="capitalTrendChart" class="chart-container" style="height:300px"></div>
     </div>
     <div class="card">
-      <div class="card-title">板块资金流向排行 <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="主力净流入（亿）">主力净流入（亿）</span></div>
+      <div class="card-title"><span data-i18n="板块资金流向排行">板块资金流向排行</span> <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="主力净流入（亿）">主力净流入（亿）</span></div>
       <div class="sector-flow-scroll">
         <div id="sectorFlowChart" class="chart-container" style="height:300px"></div>
       </div>
@@ -575,7 +575,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <div class="card-title" data-i18n="个股主力资金净流入 TOP20">个股主力资金净流入 TOP20</div>
       <div class="sector-list-wrap" style="max-height:420px;overflow-y:auto">
         <table>
-          <thead><tr><th>名称</th><th>代码</th><th>涨跌幅</th><th data-i18n="主力净流入(亿)">主力净流入(亿)</th><th data-i18n="净占比">净占比</th></tr></thead>
+          <thead><tr><th data-i18n="名称">名称</th><th data-i18n="代码">代码</th><th data-i18n="涨跌幅">涨跌幅</th><th data-i18n="主力净流入(亿)">主力净流入(亿)</th><th data-i18n="净占比">净占比</th></tr></thead>
           <tbody id="stockFlowTopIn"><tr><td colspan="5" style="text-align:center;color:var(--text2);padding:20px" data-i18n="加载中...">加载中...</td></tr></tbody>
         </table>
       </div>
@@ -584,7 +584,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <div class="card-title" data-i18n="个股主力资金净流出 TOP20">个股主力资金净流出 TOP20</div>
       <div class="sector-list-wrap" style="max-height:420px;overflow-y:auto">
         <table>
-          <thead><tr><th>名称</th><th>代码</th><th>涨跌幅</th><th data-i18n="主力净流出(亿)">主力净流出(亿)</th><th data-i18n="净占比">净占比</th></tr></thead>
+          <thead><tr><th data-i18n="名称">名称</th><th data-i18n="代码">代码</th><th data-i18n="涨跌幅">涨跌幅</th><th data-i18n="主力净流出(亿)">主力净流出(亿)</th><th data-i18n="净占比">净占比</th></tr></thead>
           <tbody id="stockFlowTopOut"><tr><td colspan="5" style="text-align:center;color:var(--text2);padding:20px" data-i18n="加载中...">加载中...</td></tr></tbody>
         </table>
       </div>
@@ -637,7 +637,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   <div id="portfolioSummary8" style="display:none" class="heat-grid"></div>
   <div class="card">
     <div class="card-title">
-      自选基金每日涨跌
+      <span data-i18n="自选基金每日涨跌">自选基金每日涨跌</span>
       <span style="font-size:11px;color:var(--text2);font-weight:400" id="fundNavDate"></span>
     </div>
     <div id="fundChart8" class="chart-container" style="height:300px;margin-bottom:12px"></div>
@@ -646,11 +646,11 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <table class="fund-table">
       <thead>
         <tr>
-          <th data-i18n="基金名称">基金名称</th><th>代码</th><th data-i18n="跟踪指数/板块">跟踪指数/板块</th>
+          <th data-i18n="基金名称">基金名称</th><th data-i18n="代码">代码</th><th data-i18n="跟踪指数/板块">跟踪指数/板块</th>
           <th class="sortable" data-sort="nav" data-i18n="最新净值">最新净值</th>
           <th class="sortable" data-sort="accNav" data-i18n="累计净值">累计净值</th>
           <th data-i18n="净值日期">净值日期</th>
-          <th class="sortable" data-sort="navChg">涨跌幅</th>
+          <th class="sortable" data-sort="navChg" data-i18n="涨跌幅">涨跌幅</th>
           <th class="sortable" data-sort="idxChg" data-i18n="对应指数今日">对应指数今日</th>
           <th data-i18n="持仓盈亏">持仓盈亏</th>
         </tr>
@@ -762,7 +762,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <!-- Section 6: Multi-Stock Comparison -->
 <section class="section" id="section6">
   <div class="card">
-    <div class="card-title">多股叠加对比 <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="选择 2-5 只股票对比走势（归一化百分比）">选择 2-5 只股票对比走势（归一化百分比）</span></div>
+    <div class="card-title"><span data-i18n="多股叠加对比">多股叠加对比</span> <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="选择 2-5 只股票对比走势（归一化百分比）">选择 2-5 只股票对比走势（归一化百分比）</span></div>
     <div class="compare-controls">
       <select id="compareWatchlistSelect" onchange="addCompareFromWatchlist(this)" style="width:160px">
         <option value="" data-i18n="从自选添加...">从自选添加...</option>
@@ -800,7 +800,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div class="manual-block">
       <div class="manual-h2" data-i18n="二、九大板块说明">二、九大板块说明</div>
       <table class="manual-table">
-        <tr><th style="width:60px">板块</th><th style="width:120px">名称</th><th>功能</th></tr>
+        <tr><th style="width:60px">板块</th><th style="width:120px" data-i18n="名称">名称</th><th data-i18n="功能">功能</th></tr>
         <tr><td>1</td><td>全球指数</td><td>查看全球主要股指（上证、深证、创业板、科创50、沪深300、恒生、道琼斯、标普500、纳斯达克100、日经225、韩国综合指数等）的实时行情与K线走势，支持分时/日K/周K/月K/年K切换。</td></tr>
         <tr><td>2</td><td>A股市场热度</td><td>大盘情绪一览：涨跌家数、涨停跌停、板块涨幅排行、主力资金流向趋势图。</td></tr>
         <tr><td>3</td><td>A股板块</td><td>按行业板块查看个股表现，点击板块名进入板块详情K线。</td></tr>
@@ -828,11 +828,11 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div class="manual-block">
       <div class="manual-h2" data-i18n="四、键盘快捷键">四、键盘快捷键</div>
       <table class="manual-table">
-        <tr><th style="width:120px">按键</th><th>功能</th></tr>
-        <tr><td><kbd>1</kbd> ~ <kbd>9</kbd></td><td>切换到对应板块</td></tr>
+        <tr><th style="width:120px">按键</th><th data-i18n="功能">功能</th></tr>
+        <tr><td><kbd>1</kbd> ~ <kbd>9</kbd></td><td data-i18n="切换到对应板块">切换到对应板块</td></tr>
         <tr><td><kbd>0</kbd></td><td>切换到说明书</td></tr>
         <tr><td><kbd>R</kbd></td><td>刷新当前板块数据（API失败时也可用于手动重试）</td></tr>
-        <tr><td><kbd>S</kbd></td><td>打开/关闭设置面板</td></tr>
+        <tr><td><kbd>S</kbd></td><td data-i18n="打开/关闭设置面板">打开/关闭设置面板</td></tr>
         <tr><td><kbd>T</kbd></td><td>切换主题（深色 → 浅色 → 跟随系统 → 深色）</td></tr>
         <tr><td><kbd>H</kbd></td><td>显示/隐藏快捷键帮助浮层</td></tr>
         <tr><td><kbd>Esc</kbd></td><td>关闭设置面板 / 帮助浮层 / 弹窗</td></tr>
@@ -1125,7 +1125,16 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 
     <div class="manual-block">
       <div class="manual-h2" data-i18n="十九、更新记录">十九、更新记录</div>
-      <p><strong>2026.8.1（v1.1.9）</strong></p>
+      <p><strong>2026.8.1（v1.2.0 正式版）</strong></p>
+      <ul class="manual-ul">
+        <li><strong>整站中英文双语界面：</strong>导航栏「中 / EN」按钮一键切换整个网页语言，覆盖导航标签、按钮、卡片标题、表格表头、图表标题、市场状态、设置面板、快捷键浮层、Toast 提示及说明书全部章节正文（新增完整英文版说明书）。语言选择自动保存。</li>
+        <li><strong>全局搜索升级（支持全球市场 + 中英文）：</strong>搜索范围扩展至全球（A股/港股/美股/英股/指数/板块/期货/基金）；修复指数被误标为"美股"的类型判断；新增港股/美股/英股独立分类与市场徽章（沪/深/港/美/英/指/期）。</li>
+        <li><strong>搜索稳定性与精准度：</strong>增加请求竞态保护（token 机制），快速连续输入只渲染最后一次结果；股票/基金两请求全部完成才一次性渲染（3 秒兜底）；过滤美股债券（TypeUS 6）与期权衍生品（TypeUS 13-18）噪音——搜索"苹果/Apple"现在首位即 AAPL。</li>
+        <li><strong>基金持仓盘中实时估值：</strong>交易时段内「自选基金涨跌」显示盘中估值（"估"标记 + 估值时间），持仓盈亏与汇总卡片按估值计算，收盘后自动回退官方净值。</li>
+        <li><strong>数据源容错扩展：</strong>腾讯回退新增港股（hk）/美股（us）支持，新浪回退新增美股 106/107 市场，全球股票在东财不可用时仍可兜底。</li>
+        <li><strong>安全与健壮性修复：</strong>修复设置面板与搜索结果多处的 XSS 注入风险（属性值/内联事件统一转义）；修复 JSONP 超时与错误可能双重重试的竞态；修复基金 5 分钟自动刷新定时器判断错误（原判断 section5 实为 section8）；修复页面可见性恢复与 API 熔断恢复漏刷新 section6/8 的问题；修复保存设置时基金为空导致股票已保存但提示失败的问题。</li>
+      </ul>
+      <p style="margin-top:12px"><strong>2026.8.1（v1.1.9）</strong></p>
       <ul class="manual-ul">
         <li><strong>基金持仓新增盘中实时估值：</strong>交易时段内，「自选基金涨跌」板块的净值列显示盘中实时估值（带"估"标记和估值时间），持仓盈亏、持仓汇总卡片（总市值/总盈亏/综合收益率）同步按估值计算，盈亏随盘中估值实时变动；收盘后自动回退到官方每日净值。非交易时段保持原有行为。</li>
       </ul>
@@ -1192,10 +1201,337 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 
     <div style="text-align:center;color:var(--text2);font-size:12px;margin-top:32px;padding-top:16px;border-top:1px solid var(--border)">
       金融数据面板 · 纯前端 · 数据来自东方财富 / 腾讯财经 / 新浪财经<br>
-      <span style="display:inline-block;margin-top:6px">开发者：秧末 · 版本号：1.1.5 · 最后更新：2026.7.29</span>
+      <span style="display:inline-block;margin-top:6px">开发者：秧末 · 版本号：1.2.0 · 最后更新：2026.8.1</span>
     </div>
   </div>
 </section>
+
+<!-- English manual template (used by applyManualI18N when UI language = EN) -->
+<template id="manualEnTemplate">
+  <div class="manual-block">
+    <div class="manual-h2">1. What is this?</div>
+    <p>This is a pure front-end real-time financial data dashboard. All data comes from public APIs of EastMoney / Tencent Finance / Sina Finance. Open and use — no registration or login required. Just add the stocks and funds you care about to get real-time quotes, K-line charts, capital flow and more.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">2. Module Guide</div>
+    <table class="manual-table">
+      <tr><th style="width:60px">#</th><th style="width:140px">Module</th><th>What it does</th></tr>
+      <tr><td>1</td><td>World Indices</td><td>Real-time quotes and K-lines for major global indices (SSE, SZSE, ChiNext, STAR 50, CSI 300, Hang Seng, Dow Jones, S&amp;P 500, Nasdaq 100, Nikkei 225, KOSPI...). Supports intraday / day / week / month / year periods.</td></tr>
+      <tr><td>2</td><td>A-Share Heat</td><td>Market sentiment overview: advancers/decliners, limit-ups/downs, sector gainers, main capital flow trend.</td></tr>
+      <tr><td>3</td><td>A-Share Sectors</td><td>Browse stocks by industry sector; click a sector name to view its K-line detail.</td></tr>
+      <tr><td>4</td><td>A-Share Capital Flow</td><td>Sector capital-flow ranking + market net-inflow trend chart to gauge main-force moves.</td></tr>
+      <tr><td>5</td><td>My Stocks</td><td>Add stocks you follow and view real-time quotes &amp; K-lines. Supports intraday/day/week/month/year. The dropdown has search filtering.</td></tr>
+      <tr><td>6</td><td>Compare</td><td>Select 2-5 stocks for normalized percentage-overlay comparison, quickly add from your watchlist. Day/week/month/year periods.</td></tr>
+      <tr><td>7</td><td>My Fund Sectors</td><td>After adding funds, view fund NAV K-lines overlaid with their tracked index. "Details" link opens holdings, performance, fund manager info.</td></tr>
+      <tr><td>8</td><td>My Fund Movers</td><td>Fund table: latest NAV, cumulative NAV, change %, tracked index change, holdings P/L. Sortable headers. With holdings configured, a portfolio summary card (invested, value, P/L, total return) appears above the table.</td></tr>
+      <tr><td>9</td><td>Precious Metals</td><td>Real-time quotes &amp; K-lines for SH Gold/Silver and COMEX Gold/Silver.</td></tr>
+    </table>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">3. How to Add Watchlist?</div>
+    <ol class="manual-ol">
+      <li>Press <kbd>S</kbd> or click the <strong>Settings</strong> button (top right) to open the settings panel.</li>
+      <li>In "My Stock Settings", enter a stock name or code (e.g. <em>茅台</em> or <em>600519</em>), click Search, and add from the results.</li>
+      <li>You can also fill in code and name directly and click "Manual Add".</li>
+      <li>Funds work the same way: enter a fund name or code in "My Fund Settings" (e.g. <em>创业板</em> or <em>015794</em>), click Search — the matching index is auto-filled; click a result to add. You may also fill in the fund code/name manually. The tracked index is optional; funds without a matched index still work and their NAV shows in "My Fund Movers".</li>
+      <li>Click "Save &amp; Refresh" to apply.</li>
+      <li>Empty watchlists show an empty-state hint in the corresponding module.</li>
+    </ol>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">4. Keyboard Shortcuts</div>
+    <table class="manual-table">
+      <tr><th style="width:120px">Key</th><th>Function</th></tr>
+      <tr><td><kbd>1</kbd> ~ <kbd>9</kbd></td><td>Switch to the corresponding module</td></tr>
+      <tr><td><kbd>0</kbd></td><td>Switch to the manual</td></tr>
+      <tr><td><kbd>R</kbd></td><td>Refresh current module data (also manual retry after API failure)</td></tr>
+      <tr><td><kbd>S</kbd></td><td>Open / close settings panel</td></tr>
+      <tr><td><kbd>T</kbd></td><td>Cycle theme (dark → light → follow system → dark)</td></tr>
+      <tr><td><kbd>H</kbd></td><td>Show / hide shortcut help overlay</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Close settings panel / help overlay / modal</td></tr>
+    </table>
+    <p style="color:var(--text2);font-size:12px;margin-top:8px">Tip: shortcuts don't fire while typing in an input. Press <kbd>H</kbd> anytime to view all shortcuts.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">5. Drag to Reorder Tabs</div>
+    <p>The 10 module tabs in the top navigation can be <strong>freely dragged</strong> to swap positions. Drag a tab to the target position; the order auto-saves.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">6. Chart Features</div>
+    <ul class="manual-ul">
+      <li><strong>Period switch:</strong> each K-line module has "Intraday / 1m K / Day / Week / Month / Year" buttons. Year K-lines are aggregated from monthly data, ideal for long-term trend analysis.</li>
+      <li><strong>Indicator overlay:</strong> MA / MACD / KDJ / BOLL / RSI toggle buttons above each chart. Click to overlay/remove; default is plain K-line. Indicator state auto-saves and syncs to the URL.</li>
+      <li><strong>Custom indicator params:</strong> in the "Indicator Params" area of settings, customize each indicator's parameters:
+        <ul style="margin-top:4px;padding-left:20px">
+          <li><strong>MA:</strong> default [5, 10, 20, 50, 100, 200]; freely adjust the period combination (max 6 lines).</li>
+          <li><strong>MACD:</strong> default short=12, long=26, signal=9.</li>
+          <li><strong>RSI:</strong> default [6, 12, 24]; multiple periods supported.</li>
+          <li><strong>KDJ:</strong> default N=9, M1=3, M2=3.</li>
+          <li><strong>BOLL:</strong> default N=20, K=2.</li>
+        </ul>
+        Click "Save Params" to apply, "Restore Defaults" to reset. Params auto-save and sync across devices.
+      </li>
+      <li><strong>Drawing tools:</strong> three drawing buttons above each K-line chart:
+        <ul style="margin-top:4px;padding-left:20px">
+          <li>📏 <strong>Horizontal line:</strong> enter drawing mode, click anywhere in the chart to place a horizontal reference line (support/resistance).</li>
+          <li>📈 <strong>Trend line:</strong> click twice — start and end points — to draw a sloped line for trend marking.</li>
+          <li>🗑️ <strong>Clear drawings:</strong> remove all drawings on the current chart.</li>
+        </ul>
+        Drawings auto-save locally and persist across period switches/refreshes. Each symbol keeps its own drawings.
+      </li>
+      <li><strong>Time range slider:</strong> a widened slider (28px) at the chart bottom lets you zoom the visible range; handles show corresponding dates. Quick range buttons are also available:
+        <ul style="margin-top:4px;padding-left:20px">
+          <li><strong>1M / 3M / 6M / 1Y:</strong> zoom to the last N trading days.</li>
+          <li><strong>All:</strong> show all history.</li>
+        </ul>
+      </li>
+      <li><strong>Data export:</strong> the "Export CSV" button next to the chart exports OHLC + volume as CSV (Excel-compatible with Chinese display).</li>
+      <li><strong>Screenshot:</strong> the built-in ECharts toolbar has a "save as image" button (📷) in each chart's top-right corner to save as PNG.</li>
+      <li><strong>Table sorting:</strong> headers in the Fund Movers table (latest NAV, cumulative NAV, change %, tracked index, holdings P/L) are clickable; click again to toggle asc/desc.</li>
+      <li><strong>Search filter:</strong> search boxes beside the stock/fund dropdowns filter in real time.</li>
+    </ul>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">7. Price Alerts</div>
+    <ol class="manual-ol">
+      <li>Open settings and find the "Price Alerts" area.</li>
+      <li>Pick a symbol from your watchlist, choose direction (rise to / drop to), and enter the target price.</li>
+      <li>Alerts auto-save. When the quote crosses your target, a prominent banner appears at the top of the page.</li>
+      <li>Triggered alerts are marked "Triggered" to avoid repeats; delete them in settings.</li>
+    </ol>
+    <p style="margin-top:12px"><strong>Enhanced alert methods (optional):</strong></p>
+    <ul class="manual-ul">
+      <li><strong>Browser notification:</strong> after enabling in settings, the first use requests notification permission. When an alert fires, a system-level desktop notification pops even if the browser is in the background or minimized.</li>
+      <li><strong>Sound alert:</strong> enabling it plays a short beep (880Hz sine, 0.5s) on trigger — useful when you need audio feedback.</li>
+      <li><strong>Alert history:</strong> the settings panel lists recent triggers (max 50) with symbol, time, direction and target price. "Clear History" wipes them all.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:12px;margin-top:8px">Tip: browser notifications require permission — allow the prompt on first use. Sound uses the Web Audio API with no external files.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">8. Theme Switching</div>
+    <p>Three theme modes: <strong>Dark</strong>, <strong>Light</strong>, <strong>Follow System</strong>.</p>
+    <ul class="manual-ul">
+      <li>Press <kbd>T</kbd> to cycle modes, or choose in the "Theme Mode" area of settings.</li>
+      <li>"Follow System" matches your OS dark/light setting and responds live when the system switches.</li>
+      <li>The choice auto-saves and syncs to the URL config.</li>
+    </ul>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">9. Cross-Device / Cross-Browser Sync</div>
+    <p>One of this dashboard's most important features: <strong>your entire watchlist config is automatically encoded into the page URL</strong>.</p>
+    <ul class="manual-ul">
+      <li>After bookmarking the page (<strong>Ctrl+D</strong>), the bookmark link contains all your config (stocks, funds, alerts, theme, indicators, tab order).</li>
+      <li>Switched browsers/devices or cleared cache? <strong>Open the bookmark to restore everything</strong>.</li>
+      <li>The URL auto-updates on every add/remove/setting change — no manual action needed.</li>
+      <li>You can also click "Generate Config Link" in settings to copy a shareable link.</li>
+      <li>Settings also supports <strong>Export Config</strong> (download JSON) and <strong>Import Config</strong> (upload JSON) for local backups.</li>
+      <li><strong>Link compression:</strong> config uses LZString to compress the URL. Legacy base64 links still parse (backward compatible).</li>
+    </ul>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">10. Auto Refresh</div>
+    <p>The page auto-refreshes the current module in the background (~every 30s). Press <kbd>R</kbd> to refresh manually. When switching modules, inactive chart instances are released to save memory and rebuilt on return. Old ECharts instances are disposed before creating new ones to prevent memory leaks over long sessions.</p>
+    <p style="color:var(--text2);font-size:12px;margin-top:4px">On load, API requests across modules are managed by a concurrency queue — at most 4 parallel JSONP requests, the rest queue up, avoiding rate-limiting during peak hours.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">11. Data Sources &amp; Fallback</div>
+    <p>Three data sources: <strong>EastMoney</strong>, <strong>Tencent Finance</strong>, <strong>Sina Finance</strong>. Default "Auto" mode tries EastMoney → Tencent → Sina to ensure availability.</p>
+    <ul class="manual-ul">
+      <li><strong>Auto (recommended):</strong> tries EastMoney → Tencent → Sina until data arrives.</li>
+      <li><strong>EastMoney only:</strong> richest data (sectors, funds, metals, capital flow). K-line/history from push2his; quotes/flow from push2delay. Quotes are ~15s delayed.</li>
+      <li><strong>Tencent only:</strong> A-share / HK / US indices.</li>
+      <li><strong>Sina only:</strong> independent K-line and quote source (jsonp_v2.php for K-lines, hq.sinajs.cn for quotes).</li>
+      <li><strong>Advancers/decliners:</strong> reads official fields from SSE Composite and SZSE Component and sums them for market breadth.</li>
+      <li><strong>Market capital flow trend:</strong> EastMoney daily flow API (push2delay/push2his fallback), last 30 days of main/super/large/medium/small net inflow.</li>
+      <li><strong>Sector flow ranking:</strong> paginates all sectors, auto-computes chart height, scrollable right column.</li>
+      <li><strong>Multi-server fallback:</strong> EastMoney endpoints support push2delay ↔ push2; K-line supports push2his ↔ push2delay; intraday flow supports push2delay ↔ push2his.</li>
+      <li><strong>Cache fallback:</strong> when all servers fail, single-source functions use the last successful cached data (10-minute validity) to avoid blank screens.</li>
+      <li><strong>Auto retry:</strong> failed requests retry up to 3 times with increasing backoff (500ms/1000ms). Request timeout is 8s.</li>
+      <li><strong>Degraded prompt:</strong> if all retries fail, charts show "Failed to load data" with a <strong>Retry button</strong>; table areas show retry buttons too. Press <kbd>R</kbd> to refresh manually.</li>
+      <li><strong>Manual retry:</strong> press <kbd>R</kbd> anytime.</li>
+      <li><strong>Auto recovery (visibility):</strong> returning to the tab resets throttle and refreshes immediately.</li>
+      <li><strong>Auto recovery (health probe):</strong> after consecutive API failures, a lightweight probe runs every 60s; on recovery the current module auto-refreshes.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:12px;margin-top:8px">Note: Tencent and Sina cover A-share/HK/US index K-lines and quotes; metals, A-share sectors and funds still need EastMoney. "Auto" picks whichever source works.</p>
+    <p style="color:var(--text2);font-size:12px;margin-top:4px">Data is for reference only and does not constitute investment advice. Markets are risky — invest carefully.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">12. Holdings &amp; P/L</div>
+    <p>Both stocks and funds support holding records with automatic P/L. Unified "Current Total Position" card design:</p>
+    <ul class="manual-ul">
+      <li><strong>Position card</strong> shows: quantity, weighted avg cost, invested amount, batch count. Updates live when held; shows "No holdings" when empty.</li>
+      <li>Four action buttons: <strong>Buy</strong> (green), <strong>Reduce</strong> (orange), <strong>Close All</strong> (red), <strong>Record</strong> (blue).</li>
+      <li><strong>Cumulative memory:</strong> every buy/DCA batch accumulates in the position; old records are never wiped by later operations — only "Close All" clears everything.</li>
+      <li>The stock quote bar shows P/L amount, P/L %, batch count, weighted cost and market value.</li>
+      <li>The Fund Movers table has a <strong>"Holdings P/L"</strong> column computed live from holdings, plus weighted avg price.</li>
+      <li><strong>Summary card:</strong> when any fund has holdings, a card above the table shows invested, value, P/L and total return.</li>
+      <li>Profit shows red, loss green (A-share convention).</li>
+      <li>Holdings sync to the URL config for cross-device use.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>Buy (Tab switch):</strong></p>
+    <ul class="manual-ul">
+      <li>Two tabs: <strong>By Amount</strong> and <strong>By Lots/Shares</strong>.</li>
+      <li><strong>By amount:</strong> enter amount (e.g. ¥5000) — the system fetches the latest price and computes quantity.</li>
+      <li><strong>By lots/shares:</strong> enter lots (stocks, 1 lot = 100 shares) or shares (funds) — the system computes the amount.</li>
+      <li>Confirming appends a new batch to the cumulative position without wiping existing records.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>DCA plan (off by default):</strong></p>
+    <ul class="manual-ul">
+      <li>A master "DCA plan" toggle sits under the position card, <strong>off</strong> by default; enabling it expands two independent sub-panels.</li>
+      <li><strong>Regular DCA</strong> and <strong>Smart DCA</strong> run independently.</li>
+    </ul>
+    <p style="margin-top:8px"><strong>Regular DCA:</strong></p>
+    <ul class="manual-ul">
+      <li><strong>Frequency:</strong> daily, weekly, bi-weekly, monthly.</li>
+      <li><strong>Precise day:</strong> for weekly/bi-weekly pick weekday(s); for monthly pick day-of-month (1-28). Unselected = run by interval from start date.</li>
+      <li><strong>Per-period amount:</strong> fixed investment per period (e.g. ¥1000).</li>
+      <li><strong>Period:</strong> start and end dates; the system generates dates within range and <strong>stops automatically at the end date</strong>.</li>
+      <li><strong>Manual stop/resume:</strong> pause/resume anytime; state auto-saves.</li>
+      <li>Click <strong>"Generate"</strong> to fetch historical prices, create all DCA batches and append them.</li>
+    </ul>
+    <p style="margin-top:8px"><strong>Smart DCA (trigger-based, independent):</strong></p>
+    <ul class="manual-ul">
+      <li>Completely independent from regular DCA with its own <strong>trigger amount</strong> and date range.</li>
+      <li><strong>Trigger logic:</strong> scans each trading day's price change vs previous day:
+        <ul style="margin-top:4px;padding-left:20px">
+          <li>Daily gain <strong>above the gain threshold</strong> (e.g. +5%): invest the trigger amount.</li>
+          <li>Daily drop <strong>beyond the drop threshold</strong> (e.g. -3%): invest the trigger amount.</li>
+          <li>Within thresholds: no investment that day.</li>
+        </ul>
+      </li>
+      <li><strong>Separate thresholds:</strong> gain and drop thresholds are set independently.</li>
+      <li><strong>Trigger amount:</strong> fixed amount per trigger (e.g. ¥500), independent of regular DCA.</li>
+      <li>Smart DCA has its own stop/resume buttons and status.</li>
+      <li>Click <strong>"Generate"</strong> to scan the whole range and invest only on threshold-crossing days.</li>
+    </ul>
+    <p style="margin-top:8px"><strong>Common notes:</strong></p>
+    <ul class="manual-ul">
+      <li>DCA config auto-saves with holdings and restores next time.</li>
+      <li>Reduce/Close All don't affect DCA config.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>Reduce (Tab switch):</strong></p>
+    <ul class="manual-ul">
+      <li>Two tabs: <strong>By Amount</strong> and <strong>By Lots/Shares</strong>.</li>
+      <li>Reducing merges all remaining batches into <strong>one position record</strong> to avoid long lists.</li>
+      <li>If reduced quantity ≥ total held, it auto-closes the position.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>Close All:</strong></p>
+    <ul class="manual-ul">
+      <li>Wipes all position records after confirmation; DCA config is unaffected.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>Record existing holdings (Tab switch):</strong></p>
+    <ul class="manual-ul">
+      <li>For holdings you already own but haven't recorded (e.g. migrated from another platform).</li>
+      <li>Two tabs: <strong>Cost + Qty</strong> and <strong>Amount + Return %</strong>.</li>
+      <li><strong>Cost + Qty:</strong> enter average buy price and shares; the system computes invested cost. Live preview below.</li>
+      <li><strong>Amount + Return %:</strong> enter current value and return % (e.g. 15 = 15%); the system back-computes cost and P/L. Live preview below.</li>
+      <li>Both tabs support an optional <strong>opening date</strong> (default today).</li>
+      <li>Confirmed records append to the cumulative position alongside later buys/DCAs.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>Worked example:</strong></p>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:8px;font-size:12px;line-height:1.8">
+      Say you buy a fund in three lots:<br>
+      &nbsp;&nbsp;Lot 1: price <strong>1.5000</strong>, <strong>10,000</strong> shares → cost ¥15,000<br>
+      &nbsp;&nbsp;Lot 2: price <strong>1.8000</strong>, <strong>5,000</strong> shares → cost ¥9,000<br>
+      &nbsp;&nbsp;Lot 3: price <strong>2.1000</strong>, <strong>8,000</strong> shares → cost ¥16,800<br>
+      The system computes:<br>
+      &nbsp;&nbsp;Total cost = 15,000 + 9,000 + 16,800 = <strong>¥40,800</strong><br>
+      &nbsp;&nbsp;Total shares = 10,000 + 5,000 + 8,000 = <strong>23,000</strong><br>
+      &nbsp;&nbsp;Weighted avg = 40,800 ÷ 23,000 = <strong>¥1.7739</strong><br>
+      &nbsp;&nbsp;If current NAV is 2.0000, value = 2.0000 × 23,000 = <strong>¥46,000</strong><br>
+      &nbsp;&nbsp;P/L = 46,000 − 40,800 = <strong>+¥5,200</strong> (+12.75%)<br>
+      No manual averaging needed — the system handles all weighted aggregation.
+    </div>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">13. Manual Input Validation</div>
+    <p>To prevent typos, manual stock/fund additions are validated:</p>
+    <ul class="manual-ul">
+      <li>Stock codes must be 6 digits (e.g. 600519).</li>
+      <li>Fund codes must be 5-6 digits.</li>
+      <li>Fund index secid is optional; when filled it must match "digits.alphanumeric" (e.g. 1.000001).</li>
+      <li>Invalid input shows a red error toast and nothing is added.</li>
+    </ul>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">14. Shortcut Help Overlay</div>
+    <p>Press <kbd>H</kbd> anytime to pop up a quick shortcut reference. Press <kbd>H</kbd> or <kbd>Esc</kbd> again to close.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">15. PWA Offline Support</div>
+    <p>This dashboard is a PWA (Progressive Web App) with offline access and desktop install.</p>
+    <ul class="manual-ul">
+      <li><strong>Offline access:</strong> after first load, the page is cached by a Service Worker. Open it offline and the cached UI still works (live data needs network).</li>
+      <li><strong>Desktop install:</strong> in Chrome/Edge, an install icon appears in the address bar — install as a standalone desktop app.</li>
+      <li><strong>Auto update:</strong> the Service Worker updates the cache in the background.</li>
+      <li><strong>Layered caching:</strong>
+        <ul style="margin-top:4px;padding-left:20px">
+          <li><strong>HTML (network-first):</strong> fresh HTML from network, cache fallback on failure.</li>
+          <li><strong>Static assets (cache-first):</strong> icons etc. served from cache to cut requests.</li>
+          <li><strong>API data (network-first + short cache):</strong> fresh data preferred, falls back to a 60s cache, so the last snapshot still shows offline.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">16. Global Search</div>
+    <p>A <strong>search box</strong> at the top-right of the navigation supports cross-market quick search.</p>
+    <ul class="manual-ul">
+      <li><strong>Scope:</strong> A-shares, HK, US, indices, sectors and funds at once, grouped by type.</li>
+      <li><strong>Quick actions:</strong> two buttons per result:
+        <ul style="margin-top:4px;padding-left:20px">
+          <li><strong>"+ Watchlist"</strong>: add the stock/fund to your watchlist in one click.</li>
+          <li><strong>"K"</strong>: jump to that module and show its K-line. Viewing K-line does <strong>not</strong> auto-add to watchlist.</li>
+        </ul>
+      </li>
+      <li><strong>Live search:</strong> fires automatically while typing (debounced), no Enter needed. Click elsewhere to close the dropdown.</li>
+      <li><strong>Multi-market:</strong> results cover SH/SZ stocks, HK, US, indices, sectors and public funds.</li>
+      <li><strong>Temp view:</strong> viewing a non-watchlist symbol via "K" temporarily adds it to the dropdown (🔍 prefix, not saved). "Clear History" removes all temp records.</li>
+      <li><strong>Search history:</strong> last 10 queries show on focus; click to jump. Auto-recorded on add/K-line view. One-click clear.</li>
+    </ul>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">17. Fund Details</div>
+    <p>In the Fund Movers table (module 8), each fund has a <strong>"Details"</strong> link that opens the fund detail panel.</p>
+    <ul class="manual-ul">
+      <li><strong>Overview:</strong> type, inception date, AUM, manager, custodian, risk level, fees, benchmark, investment objective.</li>
+      <li><strong>Performance:</strong> returns for 1W/1M/3M/6M/1Y/2Y/3Y/5Y/YTD/since inception as cards (red positive, green negative).</li>
+      <li><strong>Asset allocation:</strong> latest stock/bond/cash/other breakdown and net assets.</li>
+      <li><strong>Allocation history:</strong> last 6 quarters in a table to spot rebalancing trends.</li>
+      <li><strong>Risk metrics:</strong> computed from 1Y NAV history:
+        <ul style="margin-top:4px;padding-left:20px">
+          <li><strong>Max Drawdown:</strong> worst peak-to-trough drop in 1 year.</li>
+          <li><strong>Sharpe Ratio:</strong> excess return per unit risk; risk-free rate 2% annualized.</li>
+          <li><strong>Annualized Return:</strong> 1Y total return annualized for comparison.</li>
+          <li><strong>Annualized Volatility:</strong> daily return stdev × √252.</li>
+        </ul>
+      </li>
+    </ul>
+    <p style="color:var(--text2);font-size:12px;margin-top:8px">Data from EastMoney fund APIs (FundMNFInfo / FundMNDetailInformation / FundMNPeriodIncrease / FundMNAssetAllocation). Holdings are quarterly with 1-2 months delay.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">18. Mobile / Tablet</div>
+    <p>Fully responsive for phones and tablets.</p>
+    <ul class="manual-ul">
+      <li><strong>Tablet (≤768px):</strong> nav wraps, tabs scroll horizontally; chart heights shrink (K-line min 400px, heat 240px); table fonts/spacing compress; modals adapt.</li>
+      <li><strong>Phone (≤480px):</strong> tab key hints hidden; search box narrows to 110px (150px on focus); charts shrink further (K-line min 340px, heat 200px); table font 10px; toasts span full width; modals 96% wide.</li>
+      <li><strong>Touch optimizations:</strong> inertial scrolling, bigger tap targets; two-column layouts collapse to one on small screens.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:12px;margin-top:8px">Best in a mobile browser, or install as a PWA desktop app.</p>
+  </div>
+  <div class="manual-block">
+    <div class="manual-h2">19. Changelog</div>
+    <p><strong>2026.8.1 (v1.2.0)</strong></p>
+    <ul class="manual-ul">
+      <li><strong>Full bilingual UI:</strong> the 中/EN button switches the whole page — nav, buttons, titles, headers, chart titles, market status, settings, shortcut overlay, toasts and the complete manual body (full English manual added). Language choice persists.</li>
+      <li><strong>Global search upgraded:</strong> covers A-share/HK/US/UK indices, sectors, futures and funds; fixed the type-detection bug that labeled indices as US stocks; added HK/US/UK categories and market badges.</li>
+      <li><strong>Search stability &amp; precision:</strong> race-condition protection (only the latest query renders), single render after both APIs finish, bond/option noise filtered — searching 苹果/Apple now returns AAPL first.</li>
+      <li><strong>Intraday fund NAV estimates:</strong> during trading hours the Fund Movers table shows real-time estimates (估 badge + time); holdings P/L and summary use estimates, falling back to official NAV after close.</li>
+      <li><strong>Data-source fallback extended:</strong> Tencent/Sina fallbacks now cover HK/US symbols.</li>
+      <li><strong>Security &amp; robustness fixes:</strong> XSS injection risks in settings/search sanitized; JSONP double-retry race fixed; fund 5-min refresh timer bug fixed (was checking section 5, now 8); visibility/API-recovery now refresh sections 6/8; save-settings no longer aborts when fund list is empty.</li>
+    </ul>
+  </div>
+</template>
 
 <!-- Settings Modal -->
 <div class="modal-overlay" id="settingsModal">
@@ -1248,7 +1584,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
       <input type="text" id="newStockCode" placeholder="股票代码（如600519）" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;flex:1;min-width:120px">
       <input type="text" id="newStockName" placeholder="股票名称（如贵州茅台）" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;flex:1;min-width:120px">
-      <button class="btn btn-primary btn-sm" onclick="addStockManual()">手动添加</button>
+      <button class="btn btn-primary btn-sm" onclick="addStockManual()" data-i18n="手动添加">手动添加</button>
     </div>
 
     <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px">
@@ -1269,37 +1605,37 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
     </div>
 
-    <div style="font-size:13px;font-weight:500;margin-bottom:8px;margin-top:20px">技术指标参数</div>
-    <p style="color:var(--text2);font-size:12px;margin-bottom:12px">自定义各指标的周期参数，保存后刷新图表生效。</p>
+    <div style="font-size:13px;font-weight:500;margin-bottom:8px;margin-top:20px" data-i18n="技术指标参数">技术指标参数</div>
+    <p style="color:var(--text2);font-size:12px;margin-bottom:12px" data-i18n="自定义各指标的周期参数，保存后刷新图表生效。">自定义各指标的周期参数，保存后刷新图表生效。</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
       <div>
-        <div style="font-size:12px;color:var(--text);margin-bottom:4px">MA 周期（逗号分隔）</div>
+        <div style="font-size:12px;color:var(--text);margin-bottom:4px" data-i18n="MA 周期（逗号分隔）">MA 周期（逗号分隔）</div>
         <input type="text" id="paramMA" value="5,20,50,100,200" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:100%">
       </div>
       <div>
-        <div style="font-size:12px;color:var(--text);margin-bottom:4px">RSI 周期（3个，逗号分隔）</div>
+        <div style="font-size:12px;color:var(--text);margin-bottom:4px" data-i18n="RSI 周期（3个，逗号分隔）">RSI 周期（3个，逗号分隔）</div>
         <input type="text" id="paramRSI" value="6,12,24" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:100%">
       </div>
       <div>
-        <div style="font-size:12px;color:var(--text);margin-bottom:4px">MACD 参数（短,长,信号）</div>
+        <div style="font-size:12px;color:var(--text);margin-bottom:4px" data-i18n="MACD 参数（短,长,信号）">MACD 参数（短,长,信号）</div>
         <input type="text" id="paramMACD" value="12,26,9" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:100%">
       </div>
       <div>
-        <div style="font-size:12px;color:var(--text);margin-bottom:4px">KDJ 参数（N,M1,M2）</div>
+        <div style="font-size:12px;color:var(--text);margin-bottom:4px" data-i18n="KDJ 参数（N,M1,M2）">KDJ 参数（N,M1,M2）</div>
         <input type="text" id="paramKDJ" value="9,3,3" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:100%">
       </div>
       <div>
-        <div style="font-size:12px;color:var(--text);margin-bottom:4px">BOLL 参数（N,K）</div>
+        <div style="font-size:12px;color:var(--text);margin-bottom:4px" data-i18n="BOLL 参数（N,K）">BOLL 参数（N,K）</div>
         <input type="text" id="paramBOLL" value="20,2" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:100%">
       </div>
     </div>
     <div style="display:flex;gap:8px;margin-bottom:16px">
-      <button class="btn btn-primary btn-sm" onclick="saveIndParams()">保存参数</button>
-      <button class="btn btn-sm" onclick="resetIndParams()">恢复默认</button>
+      <button class="btn btn-primary btn-sm" onclick="saveIndParams()" data-i18n="保存参数">保存参数</button>
+      <button class="btn btn-sm" onclick="resetIndParams()" data-i18n="恢复默认">恢复默认</button>
     </div>
 
     <div style="font-size:13px;font-weight:500;margin-bottom:8px;margin-top:20px">价格提醒</div>
-    <p style="color:var(--text2);font-size:12px;margin-bottom:12px">为自选股票设置目标价位，价格穿越时在页面顶部高亮提示。可开启浏览器通知和声音提醒。</p>
+    <p style="color:var(--text2);font-size:12px;margin-bottom:12px" data-i18n="为自选股票设置目标价位，价格穿越时在页面顶部高亮提示。可开启浏览器通知和声音提醒。">为自选股票设置目标价位，价格穿越时在页面顶部高亮提示。可开启浏览器通知和声音提醒。</p>
     <div style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap">
       <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer">
         <input type="checkbox" id="alertNotifyToggle" onchange="toggleAlertNotify(this)"> 浏览器通知推送
@@ -1312,33 +1648,33 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
       <select id="alertStockSelect" style="flex:1;min-width:120px"></select>
       <select id="alertDir" style="width:80px">
-        <option value="up">涨到</option>
-        <option value="down">跌到</option>
+        <option value="up" data-i18n="涨到">涨到</option>
+        <option value="down" data-i18n="跌到">跌到</option>
       </select>
       <input type="number" id="alertPrice" placeholder="目标价" step="0.01" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:100px">
-      <button class="btn btn-primary btn-sm" onclick="addPriceAlert()">添加提醒</button>
+      <button class="btn btn-primary btn-sm" onclick="addPriceAlert()" data-i18n="添加提醒">添加提醒</button>
     </div>
-    <div style="font-size:13px;font-weight:500;margin-bottom:8px;margin-top:20px">提醒历史</div>
+    <div style="font-size:13px;font-weight:500;margin-bottom:8px;margin-top:20px" data-i18n="提醒历史">提醒历史</div>
     <div id="alertHistoryList" style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:6px;margin-bottom:8px"></div>
-    <button class="btn btn-sm" onclick="clearAlertHistory()">清空历史</button>
+    <button class="btn btn-sm" onclick="clearAlertHistory()" data-i18n="清空历史">清空历史</button>
     <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-sm" onclick="exportConfig()">导出配置</button>
-        <button class="btn btn-sm" onclick="generateConfigLink()">生成配置链接</button>
-        <button class="btn btn-sm" onclick="showRestoreLinkInput()">从链接恢复</button>
+        <button class="btn btn-sm" onclick="generateConfigLink()" data-i18n="生成配置链接">生成配置链接</button>
+        <button class="btn btn-sm" onclick="showRestoreLinkInput()" data-i18n="从链接恢复">从链接恢复</button>
         <button class="btn btn-sm" onclick="document.getElementById('importConfigFile').click()">导入配置</button>
         <input type="file" id="importConfigFile" accept=".json" style="display:none" onchange="importConfig(event)">
       </div>
       <div id="restoreLinkBox" style="display:none;margin-top:8px">
         <input type="text" id="configLinkInputSettings" placeholder="粘贴配置链接（含 #cfg=）..." style="width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:6px;font-size:12px">
         <div style="display:flex;gap:8px;margin-top:8px">
-          <button class="btn btn-primary btn-sm" onclick="restoreFromLinkSettings()">恢复</button>
+          <button class="btn btn-primary btn-sm" onclick="restoreFromLinkSettings()" data-i18n="恢复">恢复</button>
           <button class="btn btn-sm" onclick="document.getElementById('restoreLinkBox').style.display='none'">取消</button>
         </div>
       </div>
       <div style="display:flex;justify-content:flex-end;gap:8px">
         <button class="btn" onclick="closeSettings()">取消</button>
-        <button class="btn btn-primary" onclick="saveSettings()">保存并刷新</button>
+        <button class="btn btn-primary" onclick="saveSettings()" data-i18n="保存并刷新">保存并刷新</button>
       </div>
     </div>
   </div>
@@ -1361,24 +1697,24 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <div class="modal-overlay" id="shortcutHelpModal" style="z-index:10001">
   <div class="modal" style="max-width:520px">
     <div class="modal-title" style="display:flex;justify-content:space-between;align-items:center">
-      <span>键盘快捷键</span>
+      <span data-i18n="键盘快捷键">键盘快捷键</span>
       <button class="btn btn-sm" onclick="closeShortcutHelp()" style="padding:2px 8px">×</button>
     </div>
     <table style="width:100%;border-collapse:collapse;font-size:13px">
       <thead>
         <tr style="border-bottom:1px solid var(--border,#30363d)">
-          <th style="text-align:left;padding:8px 12px;width:120px">快捷键</th>
-          <th style="text-align:left;padding:8px 12px">功能</th>
+          <th style="text-align:left;padding:8px 12px;width:120px" data-i18n="快捷键">快捷键</th>
+          <th style="text-align:left;padding:8px 12px" data-i18n="功能">功能</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>1</kbd>–<kbd>9</kbd></td><td style="padding:6px 12px">切换到对应板块</td></tr>
-        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>0</kbd></td><td style="padding:6px 12px">切换到说明书板块</td></tr>
-        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>R</kbd></td><td style="padding:6px 12px">刷新当前板块数据</td></tr>
-        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>S</kbd></td><td style="padding:6px 12px">打开/关闭设置面板</td></tr>
-        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>T</kbd></td><td style="padding:6px 12px">切换主题（深色→浅色→跟随系统）</td></tr>
-        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>H</kbd></td><td style="padding:6px 12px">显示/隐藏此快捷键帮助</td></tr>
-        <tr><td style="padding:6px 12px"><kbd>Esc</kbd></td><td style="padding:6px 12px">关闭设置面板 / 帮助浮层</td></tr>
+        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>1</kbd>–<kbd>9</kbd></td><td style="padding:6px 12px" data-i18n="切换到对应板块">切换到对应板块</td></tr>
+        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>0</kbd></td><td style="padding:6px 12px" data-i18n="切换到说明书板块">切换到说明书板块</td></tr>
+        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>R</kbd></td><td style="padding:6px 12px" data-i18n="刷新当前板块数据">刷新当前板块数据</td></tr>
+        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>S</kbd></td><td style="padding:6px 12px" data-i18n="打开/关闭设置面板">打开/关闭设置面板</td></tr>
+        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>T</kbd></td><td style="padding:6px 12px" data-i18n="切换主题（深色→浅色→跟随系统）">切换主题（深色→浅色→跟随系统）</td></tr>
+        <tr style="border-bottom:1px solid var(--border,#21262d)"><td style="padding:6px 12px"><kbd>H</kbd></td><td style="padding:6px 12px" data-i18n="显示/隐藏此快捷键帮助">显示/隐藏此快捷键帮助</td></tr>
+        <tr><td style="padding:6px 12px"><kbd>Esc</kbd></td><td style="padding:6px 12px" data-i18n="关闭设置面板 / 帮助浮层">关闭设置面板 / 帮助浮层</td></tr>
       </tbody>
     </table>
     <p style="color:var(--text2,#8b949e);font-size:11px;margin-top:12px;margin-bottom:0;text-align:center">按 <kbd>H</kbd> 或 <kbd>Esc</kbd> 关闭此窗口</p>
@@ -1435,6 +1771,7 @@ var I18N = {
   /* section2 */
   '涨跌家数分布':'Advancers/Decliners','主要指数实时行情':'Index Realtime','板块涨幅排行':'Sector Gainers','点击查看详情':'click for details',
   '大盘主力资金流向趋势（近30日）':'Main Capital Flow Trend (30d)','单位：亿元':'Unit: 100M CNY','板块资金流向排行':'Sector Capital Flow Rank',
+  '实时资金流向（今日累计）':'Real-time Capital Flow (Today, cumulative)','主力净流入（亿）':'Main Net Inflow (100M)',
   '主力净流入（亿）':'Main Net Inflow (100M)','主力净流入(亿)':'Net Inflow (100M)','主力净流出(亿)':'Net Outflow (100M)','净占比':'Net %',
   '个股主力资金净流入 TOP20':'Top 20 Net Inflow','个股主力资金净流出 TOP20':'Top 20 Net Outflow',
   /* tables */
@@ -1485,6 +1822,46 @@ var I18N = {
   '详情':'Details','估值':'Est.','盘中实时估值':'Intraday estimate','盘中估值':'intraday est.',
   '* 盘中实时估值，收盘后以官方净值为准':'* Intraday estimate; official NAV prevails after market close',
   '按最近一个交易日官方净值计算':'Based on latest official NAV',
+  /* 设置面板 */
+  '手动添加':'Manual Add','技术指标参数':'Indicator Params',
+  '自定义各指标的周期参数，保存后刷新图表生效。':'Customize indicator periods; takes effect after refresh.',
+  'MA 周期（逗号分隔）':'MA periods (comma-separated)',
+  'RSI 周期（3个，逗号分隔）':'RSI periods (3, comma-separated)',
+  'MACD 参数（短,长,信号）':'MACD (short,long,signal)',
+  'KDJ 参数（N,M1,M2）':'KDJ (N,M1,M2)',
+  'BOLL 参数（N,K）':'BOLL (N,K)',
+  '保存参数':'Save Params','恢复默认':'Restore Defaults',
+  '为自选股票设置目标价位，价格穿越时在页面顶部高亮提示。可开启浏览器通知和声音提醒。':'Set target prices for watchlist stocks; a banner highlights when price crosses. Optionally enable browser notifications and sound.',
+  '浏览器通知推送':'Browser Notifications','声音提醒':'Sound Alert',
+  '涨到':'Rise to','跌到':'Drop to','添加提醒':'Add Alert',
+  '提醒历史':'Alert History','清空历史':'Clear History',
+  '生成配置链接':'Generate Config Link','从链接恢复':'Restore from Link',
+  '恢复':'Restore','保存并刷新':'Save & Refresh',
+  '键盘快捷键':'Keyboard Shortcuts','快捷键':'Shortcuts','功能':'Function',
+  '切换到对应板块':'Switch to the corresponding module','切换到说明书板块':'Switch to the manual module',
+  '刷新当前板块数据':'Refresh current module data','打开/关闭设置面板':'Open/close settings',
+  '切换主题（深色→浅色→跟随系统）':'Cycle theme (dark→light→follow system)',
+  '显示/隐藏此快捷键帮助':'Show/hide this shortcut help',
+  '关闭设置面板 / 帮助浮层':'Close settings panel / help overlay',
+  '关闭此窗口':'Close this window',
+  '提示：请按 Ctrl+D 收藏本页，换浏览器或清缓存后打开收藏即可恢复全部自选':'Tip: press Ctrl+D to bookmark; open the bookmark after switching browsers or clearing cache to restore everything',
+  /* 持仓编辑器动态文本 */
+  '当前总仓位':'Current Position','暂无持仓':'No holdings','持有':'Held','均价':'Avg','投入':'Invested','市值':'Value','笔':'lots',
+  '买入':'Buy','减仓':'Reduce','清仓':'Close All','录入':'Record',
+  '定投计划':'DCA Plan','已开启':'ON','未开启':'OFF','开启':'ON','关闭':'OFF',
+  '普通定投':'Regular DCA','智能定投':'Smart DCA','定投频率':'Frequency','每期金额':'Per-period amount','触发金额':'Trigger amount',
+  '每日':'Daily','每周':'Weekly','每两周':'Bi-weekly','每月':'Monthly','生成':'Generate','停止':'Stop','恢复':'Resume',
+  '按金额':'By Amount','按手数/份数':'By Lots/Shares','按成本+数量':'Cost + Qty','按金额+收益率':'Amount + Return %',
+  '当前价':'Current','买入金额':'Buy amount','减仓金额':'Reduce amount','买入数量':'Buy qty','减仓数量':'Reduce qty',
+  '暂无自选股票，请通过搜索或手动添加':'No stocks yet — add via search or manually',
+  '暂无自选基金，请在下方手动添加':'No funds yet — add manually below',
+  '提示：腾讯和新浪支持A股/港股/美股指数，贵金属、A股板块、基金等仍需东方财富。"自动"模式下依次尝试三个数据源。':'Note: Tencent and Sina cover A-share/HK/US index quotes; metals, A-share sectors and funds still need EastMoney. "Auto" tries the three sources in order.',
+  '选择"跟随系统"将自动匹配操作系统的深色/浅色模式。':'"Follow System" matches your OS dark/light setting automatically.',
+  '输入股票名称或代码搜索添加（如 茅台 / 600519），也可手动输入代码添加。沪市代码以6开头，深市以0或3开头。':'Search by stock name or code (e.g. 茅台 / 600519), or enter the code manually. Shanghai codes start with 6, Shenzhen with 0 or 3.',
+  '输入基金名称或代码搜索添加，系统自动匹配对应指数。也可手动填写基金代码、名称。对应指数为可选项，未匹配到指数的基金仍可正常添加。指数secid格式：1.000001=上证指数, 0.399006=创业板指, 90.BK0428=电力行业':'Search by fund name or code; the matching index is auto-filled. You may also enter code/name manually. The index is optional — funds without a match still work. Index secid format: 1.000001=SSE, 0.399006=ChiNext, 90.BK0428=Power sector',
+  '输入基金名称或代码搜索（如 创业板 / 015794）':'Search fund name/code (e.g. ChiNext / 015794)',
+  '输入名称或代码搜索（如 茅台 / 600519）':'Search name/code (e.g. 茅台 / 600519)',
+  '暂无价格提醒':'No price alerts yet','暂无触发记录':'No triggered records',
   /* 说明书标题 */
   '一、这是什么？':'1. What is this?',
   '二、九大板块说明':'2. Module Guide',
@@ -1508,13 +1885,19 @@ var I18N = {
   '金融数据面板 — 使用说明书':'Financial Data Dashboard — User Manual'
 };
 function t(text){ return (_uiLang === 'en' && I18N[text]) ? I18N[text] : text; }
-/* 将字符串中的已知中文短语翻译（用于动态拼接文本） */
+/* 将字符串中的已知中文短语翻译（用于动态拼接文本）。
+   注意：按短语长度降序替换，避免短词先替换导致长句残缺混合。 */
 function tStr(str){
   if(_uiLang !== 'en') return str;
-  var out = str;
+  var keys = [];
   for(var k in I18N){
-    if(I18N.hasOwnProperty(k) && k.length > 1 && out.indexOf(k) >= 0){
-      out = out.split(k).join(I18N[k]);
+    if(I18N.hasOwnProperty(k) && k.length > 1) keys.push(k);
+  }
+  keys.sort(function(a,b){ return b.length - a.length; }); // longest first
+  var out = str;
+  for(var i=0;i<keys.length;i++){
+    if(out.indexOf(keys[i]) >= 0){
+      out = out.split(keys[i]).join(I18N[keys[i]]);
     }
   }
   return out;
@@ -1535,6 +1918,41 @@ function applyI18N(root){
     if(pkey){ p.setAttribute('placeholder', t(pkey)); }
   }
 }
+/* 说明书整块中英替换：首次调用缓存中文版，英文模式切换为英文模板 */
+var __manualZh = null;
+function applyManualI18N(){
+  var sec = document.getElementById('section10');
+  if(!sec) return;
+  if(__manualZh === null){ __manualZh = sec.innerHTML; } // cache Chinese manual on first call
+  var tpl = document.getElementById('manualEnTemplate');
+  if(!tpl) return;
+  if(_uiLang === 'en'){
+    sec.innerHTML = tpl.innerHTML;
+  } else {
+    sec.innerHTML = __manualZh;
+  }
+}
+/* 动态生成内容的中英翻译：遍历元素，替换文本节点中的已知字典短语。
+   用于设置面板/持仓编辑器等 JS 动态生成的 HTML（data-i18n 覆盖不到的部分）。 */
+function translateDynamic(root){
+  if(_uiLang !== 'en') return;
+  root = root || document;
+  if(!root.querySelectorAll) return;
+  var nodes = root.querySelectorAll('*');
+  for(var i=0;i<nodes.length;i++){
+    var el = nodes[i];
+    // 处理所有子节点中的纯文本节点（不管父元素是否还有其他子元素）
+    for(var c=0; c<el.childNodes.length; c++){
+      var cn = el.childNodes[c];
+      if(cn.nodeType === 3){ // TEXT_NODE
+        var v = cn.nodeValue;
+        if(v && /[\u4e00-\u9fa5]/.test(v)){
+          cn.nodeValue = tStr(v);
+        }
+      }
+    }
+  }
+}
 function toggleUiLang(){
   _uiLang = (_uiLang === 'zh') ? 'en' : 'zh';
   try{ localStorage.setItem('uiLang', _uiLang); }catch(e){}
@@ -1543,6 +1961,7 @@ function toggleUiLang(){
   var input = document.getElementById('globalSearchInput');
   if(input) input.placeholder = (_uiLang === 'zh') ? '搜索股票/基金/指数...' : 'Search stocks/funds/indices...';
   applyI18N();
+  applyManualI18N();
   renderNavTabs();
   var active = document.querySelector('.section.active');
   if(active){
@@ -2241,7 +2660,7 @@ function checkEmptyDataAndPrompt(){
       '<div style="margin:16px 0">' +
       '<label style="color:var(--text2);font-size:12px;display:block;margin-bottom:6px">从配置链接恢复（粘贴含 #cfg= 的链接）：</label>' +
       '<input type="text" id="configLinkInput" placeholder="粘贴配置链接..." style="width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:6px;font-size:12px">' +
-      '<button class="btn btn-primary btn-sm" style="margin-top:8px;width:100%" onclick="restoreFromLink()">从链接恢复</button>' +
+      '<button class="btn btn-primary btn-sm" style="margin-top:8px;width:100%" onclick="restoreFromLink()" data-i18n="从链接恢复">从链接恢复</button>' +
       '</div>' +
       '<div style="text-align:center;margin:16px 0 8px;color:var(--text2);font-size:11px">— 或 —</div>' +
       '<div style="display:flex;gap:8px">' +
@@ -2489,30 +2908,29 @@ function jsonpRaw(url, cbParam, cb){
     };
     var script = document.createElement('script');
     script.src = url + (url.indexOf('?')>=0?'&':'?') + cbParam + '=' + name;
+    var retryScheduled = false;
+    function scheduleRetry(){
+      if(done || retryScheduled) return;
+      if(attempt <= maxRetries){
+        retryScheduled = true;
+        setTimeout(function(){ retryScheduled = false; doAttempt(); }, attempt * 500);
+      } else {
+        retryScheduled = true;
+        trackApiResult(false); cb(new Error('请求失败'));
+      }
+    }
     script.onerror = function(){
       cleanup();
-      if(!done){
-        if(attempt <= maxRetries){
-          setTimeout(doAttempt, attempt * 500);
-        } else {
-          trackApiResult(false); cb(new Error('请求失败'));
-        }
-      }
+      scheduleRetry();
     };
     document.body.appendChild(script);
     var timer = setTimeout(function(){
       cleanup();
-      if(!done){
-        if(attempt <= maxRetries){
-          setTimeout(doAttempt, attempt * 500);
-        } else {
-          trackApiResult(false); cb(new Error('超时'));
-        }
-      }
+      scheduleRetry();
     }, 8000);
     function cleanup(){
       clearTimeout(timer);
-      delete window[name];
+      window[name] = function(){}; // no-op to swallow late callbacks
       if(script.parentNode) script.parentNode.removeChild(script);
     }
   }
@@ -4048,7 +4466,7 @@ function loadSection1(){
     var opt = buildKLineOption(data.dates, data.ohlc, data.volumes, data.closes, isIntra, data._sparseReason);
     state.s1.chart.setOption(opt, true);
     restoreDrawingsForSection('1');
-    document.getElementById('lastUpdate1').textContent = '更新: ' + timeStr() + (data.source ? ' ['+data.source+']' : '');
+    document.getElementById('lastUpdate1').textContent = (_uiLang==='en'?'Updated: ':'更新: ') + timeStr() + (data.source ? ' ['+data.source+']' : '');
     document.getElementById('refreshIndicator').textContent = '';
     // Update quote bar
     updateQuoteBar1(secid, data);
@@ -4174,7 +4592,7 @@ function loadSection2(){
     document.getElementById('sectorRankList').innerHTML = html;
   });
 
-  document.getElementById('lastUpdate2').textContent = '更新: ' + timeStr();
+  document.getElementById('lastUpdate2').textContent = (_uiLang==='en'?'Updated: ':'更新: ') + timeStr();
 }
 
 function jumpToSector3(code, name){
@@ -4231,7 +4649,7 @@ function loadSection3(){
     var opt = buildKLineOption(data.dates, data.ohlc, data.volumes, data.closes, isIntra, data._sparseReason);
     state.s3.chart.setOption(opt, true);
     restoreDrawingsForSection('3');
-    document.getElementById('lastUpdate3').textContent = '更新: ' + timeStr() + (data.source ? ' ['+data.source+']' : '');
+    document.getElementById('lastUpdate3').textContent = (_uiLang==='en'?'Updated: ':'更新: ') + timeStr() + (data.source ? ' ['+data.source+']' : '');
     updateQuoteBar3(secid, data);
   }
 
@@ -4335,7 +4753,7 @@ function loadSection7(){
     var opt = buildKLineOption(data.dates, data.ohlc, data.volumes, data.closes, isIntra, data._sparseReason);
     state.s7.chart.setOption(opt, true);
     restoreDrawingsForSection('7');
-    document.getElementById('lastUpdate7').textContent = '更新: ' + timeStr() + (data.source ? ' ['+data.source+']' : '');
+    document.getElementById('lastUpdate7').textContent = (_uiLang==='en'?'Updated: ':'更新: ') + timeStr() + (data.source ? ' ['+data.source+']' : '');
     updateQuoteBar4(fund, data);
   }
 
@@ -4429,7 +4847,7 @@ function compareSearch(){
       var secid = mkt + '.' + code;
       var alreadyAdded = state.s6.stocks.some(function(s){return s.secid === secid});
       if(state.s6.stocks.length >= 5 && !alreadyAdded) return;
-      html += '<div style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;margin:2px;cursor:'+(alreadyAdded?'default':'pointer')+'"'+(alreadyAdded?'':' onclick="addCompareStock(\''+secid+'\',\''+escSq(name)+'\',\''+code+'\')"')+'>'+
+      html += '<div style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;margin:2px;cursor:'+(alreadyAdded?'default':'pointer')+'"'+(alreadyAdded?'':' onclick="addCompareStock(\''+escSq(secid)+'\',\''+escSq(name)+'\',\''+escSq(code)+'\')"')+'>'+
         '<span style="color:var(--text);font-size:12px">'+escHtml(name)+'</span>'+
         '<span style="color:var(--text2);font-size:11px">'+escHtml(code)+'</span>'+
         '<span style="font-size:11px;color:'+(alreadyAdded?'var(--text2)':'var(--blue)')+'">'+(alreadyAdded?'已添加':'+ 添加')+'</span>'+
@@ -4458,7 +4876,7 @@ function removeCompareStock(secid){
 function renderCompareTags(){
   var html = '';
   state.s6.stocks.forEach(function(s){
-    html += '<span class="compare-tag">'+escHtml(s.name)+' ('+escHtml(s.code)+')<span class="remove" onclick="removeCompareStock(\''+s.secid+'\')">×</span></span>';
+    html += '<span class="compare-tag">'+escHtml(s.name)+' ('+escHtml(s.code)+')<span class="remove" onclick="removeCompareStock(\''+escSq(s.secid)+'\')">×</span></span>';
   });
   document.getElementById('compareTags').innerHTML = html;
   renderCompareWatchlist(); // sync dropdown
@@ -4470,7 +4888,7 @@ function renderCompareWatchlist(){
   stockList.forEach(function(s){
     var alreadyAdded = state.s6.stocks.some(function(c){return c.secid === s.secid});
     if(alreadyAdded) return; // skip already added
-    html += '<option value="'+s.secid+'" data-name="'+escAttr(s.name)+'" data-code="'+s.code+'">'+s.name+' ('+s.code+')</option>';
+    html += '<option value="'+escAttr(s.secid)+'" data-name="'+escAttr(s.name)+'" data-code="'+escAttr(s.code)+'">'+escHtml(s.name)+' ('+escHtml(s.code)+')</option>';
   });
   if(stockList.length === 0){
     html = '<option value="">暂无自选股票</option>';
@@ -4565,7 +4983,7 @@ function renderCompareChart(allData){
     series:series,
     dataZoom:[{type:'inside',start:0,end:100},{type:'slider',start:0,end:100,height:20,bottom:5,borderColor:tc().border,fillerColor:tc().blue,textStyle:{color:tc().text2}}]
   }, true);
-  document.getElementById('lastUpdate6').textContent = '更新: ' + timeStr();
+  document.getElementById('lastUpdate6').textContent = (_uiLang==='en'?'Updated: ':'更新: ') + timeStr();
 }
 
 function setComparePeriod(btn){
@@ -6004,7 +6422,7 @@ function showSearchHistory(){
     if(h.type === '基金'){
       addLink = '<a href="javascript:void(0)" onclick="addSearchHistoryAction(\''+escSq(h.code)+'\',\''+escSq(h.name)+'\',\'基金\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
     } else if(h.secid){
-      klineLink = '<a href="javascript:void(0)" onclick="globalSearchViewKLine(\''+h.secid+'\',\''+escSq(h.name)+'\',\''+escSq(h.type)+'\')" style="color:var(--text2);font-size:11px;text-decoration:none">K线</a>';
+      klineLink = '<a href="javascript:void(0)" onclick="globalSearchViewKLine(\''+escSq(h.secid)+'\',\''+escSq(h.name)+'\',\''+escSq(h.type)+'\')" style="color:var(--text2);font-size:11px;text-decoration:none">K线</a>';
       addLink = '<a href="javascript:void(0)" onclick="addSearchHistoryAction(\''+escSq(h.secid)+'\',\''+escSq(h.name)+'\',\''+escSq(h.type)+'\',\''+escSq(h.code)+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
     }
     html += '<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border)">'+
@@ -6164,19 +6582,19 @@ function renderGlobalSearchResults(results, keyword){
         if(inFunds){
           actions = '<span style="color:#3fb950;font-size:11px">已添加</span>';
         } else {
-          actions = '<a href="javascript:void(0)" onclick="globalSearchAddFund(\''+r.code+'\',\''+escSq(r.name)+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
+          actions = '<a href="javascript:void(0)" onclick="globalSearchAddFund(\''+escSq(r.code)+'\',\''+escSq(r.name)+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
         }
       } else if(r.type === '股票' || r.type === '美股' || r.type === '港股' || r.type === '英股'){
         if(inStocks){
           actions = '<span style="color:#3fb950;font-size:11px">已添加</span>';
         } else {
-          actions = '<a href="javascript:void(0)" onclick="globalSearchAddStock(\''+r.secid+'\',\''+escSq(r.name)+'\',\''+r.code+'\',\''+r.type+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
+          actions = '<a href="javascript:void(0)" onclick="globalSearchAddStock(\''+escSq(r.secid)+'\',\''+escSq(r.name)+'\',\''+escSq(r.code)+'\',\''+escSq(r.type)+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
         }
       }
       // View K-line link for stocks/indices/sectors
       var klineLink = '';
       if(r.type !== '基金' && r.secid){
-        klineLink = ' <a href="javascript:void(0)" onclick="globalSearchViewKLine(\''+r.secid+'\',\''+escSq(r.name)+'\',\''+r.type+'\')" style="color:var(--text2);font-size:11px;text-decoration:none">K线</a>';
+        klineLink = ' <a href="javascript:void(0)" onclick="globalSearchViewKLine(\''+escSq(r.secid)+'\',\''+escSq(r.name)+'\',\''+escSq(r.type)+'\')" style="color:var(--text2);font-size:11px;text-decoration:none">K线</a>';
       }
       // Market badge from secid prefix
       var mktNum = (r.secid || '').split('.')[0];
@@ -6304,7 +6722,7 @@ function searchStock(){
       else if(mktNum === '155') mktBadge = '<span style="color:#bc8cff;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">英</span>';
       else if(mktNum === '100') mktBadge = '<span style="color:#f0a64a;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">指</span>';
       else if(mktNum === '113') mktBadge = '<span style="color:#3fb950;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">期</span>';
-      html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;margin-bottom:4px;'+(alreadyAdded?'':'cursor:pointer')+'"'+(alreadyAdded?'':' onclick="addStockFromSearch(\''+secid+'\',\''+escSq(name)+'\',\''+code+'\')"')+'>'+
+      html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;margin-bottom:4px;'+(alreadyAdded?'':'cursor:pointer')+'"'+(alreadyAdded?'':' onclick="addStockFromSearch(\''+escSq(secid)+'\',\''+escSq(name)+'\',\''+escSq(code)+'\')"')+'>'+
         '<span style="color:var(--text);font-size:12px;min-width:80px">'+escHtml(name)+'</span>'+
         '<span style="display:flex;gap:4px;align-items:center">'+mktBadge+'<span style="color:var(--text2);font-size:11px">'+escHtml(code)+'</span></span>'+
         '<span style="margin-left:auto;font-size:11px;color:'+(alreadyAdded?'var(--text2)':'var(--blue)')+'">'+(alreadyAdded?'\u5df2\u6dfb\u52a0':'+ \u6dfb\u52a0')+'</span>'+
@@ -6418,7 +6836,7 @@ function loadSection8(){
       renderFundTable5(renderData);
 
       document.getElementById('fundNavDate').textContent = '净值日期: ' + navDate;
-      document.getElementById('lastUpdate8').textContent = '更新: ' + timeStr();
+      document.getElementById('lastUpdate8').textContent = (_uiLang==='en'?'Updated: ':'更新: ') + timeStr();
 
       // Render chart
       state.s8.fundChart.setOption({
@@ -7008,7 +7426,7 @@ function loadSection4(){
     document.getElementById('stockFlowTopOut').innerHTML = html;
   });
 
-  document.getElementById('lastUpdate4').textContent = '更新: '+timeStr();
+  document.getElementById('lastUpdate4').textContent = (_uiLang==='en'?'Updated: ':'更新: ')+timeStr();
 }
 
 /* ==================== Section 9: 贵金属 ==================== */
@@ -7071,7 +7489,7 @@ function loadSection9(){
     var opt = buildKLineOption(data.dates, data.ohlc, data.volumes, data.closes, isIntra, data._sparseReason);
     state.s9.chart.setOption(opt, true);
     restoreDrawingsForSection('9');
-    document.getElementById('lastUpdate9').textContent = '更新: '+timeStr() + (data.source ? ' ['+data.source+']' : '');
+    document.getElementById('lastUpdate9').textContent = (_uiLang==='en'?'Updated: ':'更新: ')+timeStr() + (data.source ? ' ['+data.source+']' : '');
     updateQuoteBar7(data);
   }
 
@@ -7149,7 +7567,7 @@ function openSettings(){
         '<span style="color:var(--text);font-size:12px;min-width:100px">'+escHtml(s.name)+'</span>'+
         '<span style="color:var(--text2);font-size:11px;min-width:80px">'+escHtml(s.code)+'</span>'+
         holdFieldsHTML+
-        '<span style="color:var(--text2);font-size:11px;flex:1">'+s.secid+'</span>'+
+        '<span style="color:var(--text2);font-size:11px;flex:1">'+escHtml(s.secid)+'</span>'+
         '<button class="btn btn-sm" style="background:#da3633;color:#fff;border-color:#da3633" onclick="removeStockSettings('+i+')">删除</button>'+
         '</div>';
     });
@@ -7167,10 +7585,10 @@ function openSettings(){
     fundList.forEach(function(f, i){
       var holdFieldsHTML = buildHoldEditorHTML('fund', i, f.holdings);
       html += '<div class="fund-config-item">'+
-        '<input value="'+f.code+'" placeholder="代码" style="max-width:80px" data-field="code" data-idx="'+i+'" title="基金代码">'+
-        '<input value="'+f.name+'" class="fund-name-input" placeholder="产品名称" data-field="name" data-idx="'+i+'" title="产品名称">'+
-        '<input value="'+f.secid+'" placeholder="secid" style="max-width:120px" data-field="secid" data-idx="'+i+'" title="secid（如 1.000001）">'+
-        '<input value="'+f.idxName+'" placeholder="指数名" style="max-width:100px" data-field="idxName" data-idx="'+i+'" title="跟踪指数名">'+
+        '<input value="'+escAttr(f.code)+'" placeholder="代码" style="max-width:80px" data-field="code" data-idx="'+i+'" title="基金代码">'+
+        '<input value="'+escAttr(f.name)+'" class="fund-name-input" placeholder="产品名称" data-field="name" data-idx="'+i+'" title="产品名称">'+
+        '<input value="'+escAttr(f.secid)+'" placeholder="secid" style="max-width:120px" data-field="secid" data-idx="'+i+'" title="secid（如 1.000001）">'+
+        '<input value="'+escAttr(f.idxName)+'" placeholder="指数名" style="max-width:100px" data-field="idxName" data-idx="'+i+'" title="跟踪指数名">'+
         holdFieldsHTML+
         '<button class="btn btn-sm" style="background:#da3633;color:#fff;border-color:#da3633" onclick="removeFundSettings('+i+')">删除</button>'+
         '</div>';
@@ -7179,6 +7597,8 @@ function openSettings(){
   document.getElementById('fundConfigList').innerHTML = html;
   // Render price alerts
   renderAlertConfigList();
+  // Translate dynamically generated settings text (holdings editor, DCA panels, alerts)
+  translateDynamic(document.getElementById('settingsModal'));
   document.getElementById('settingsModal').classList.add('show');
 }
 
@@ -7732,7 +8152,7 @@ function saveSettings(){
       newFunds.push(f);
     }
   });
-  if(newFunds.length === 0){ showToast('基金列表为空，请至少添加一只基金或从导入恢复','warning'); return; }
+  // 允许保存空基金列表（用户可能主动清空）；不再因基金为空而中断保存
   fundList = newFunds;
   setFunds(fundList);
   closeSettings();
@@ -7934,12 +8354,26 @@ function startAutoRefresh(){
     // Check price alerts on each refresh
     checkPriceAlerts();
   }, 30000));
-  // Fund data: 5min
+  // Fund data: 5min — only when the fund movers section (8) is active
   refreshTimers.push(setInterval(function(){
-    if(_activeSection === '5') throttledLoad('8', loadSection8, 240000);
+    if(_activeSection === '8') throttledLoad('8', loadSection8, 240000);
   }, 300000));
   // Market status: 30s
   refreshTimers.push(setInterval(updateMarketStatus, 30000));
+
+  // Force-refresh the active section (used by visibilitychange & API recovery)
+  function refreshActiveSection(){
+    var num = _activeSection;
+    if(num==='1') loadSection1();
+    else if(num==='2') loadSection2();
+    else if(num==='3') loadSection3();
+    else if(num==='4') loadSection4();
+    else if(num==='5') loadSection5();
+    else if(num==='6') loadCompareChart();
+    else if(num==='7') loadSection7();
+    else if(num==='8') loadSection8();
+    else if(num==='9'){ loadSection9(); loadMetalSummary(); }
+  }
 
   // === Auto-recovery: when tab becomes visible again, force refresh ===
   document.addEventListener('visibilitychange', function(){
@@ -7947,14 +8381,7 @@ function startAutoRefresh(){
       // Reset throttle timers so refresh happens immediately
       _lastRefreshTime = {};
       _loadingSection = {};
-      var num = _activeSection;
-      if(num==='1') loadSection1();
-      else if(num==='2') loadSection2();
-      else if(num==='3') loadSection3();
-      else if(num==='4') loadSection4();
-      else if(num==='5') loadSection5();
-      else if(num==='7') loadSection7();
-      else if(num==='9'){ loadSection9(); loadMetalSummary(); }
+      refreshActiveSection();
     }
   });
 
@@ -7969,13 +8396,7 @@ function startAutoRefresh(){
           _lastRefreshTime = {};
           _loadingSection = {};
           showApiBanner(null);
-          var num = _activeSection;
-          if(num==='1') loadSection1();
-          else if(num==='2') loadSection2();
-          else if(num==='3') loadSection3();
-          else if(num==='4') loadSection4();
-          else if(num==='5') loadSection5();
-          else if(num==='7') loadSection7();
+          refreshActiveSection();
         }
       });
     }
@@ -7990,6 +8411,7 @@ onEchartsReady(function(){
   var _langInput = document.getElementById('globalSearchInput');
   if(_langInput) _langInput.placeholder = (_uiLang === 'zh') ? '搜索股票/基金/指数...' : 'Search stocks/funds/indices...';
   applyI18N();
+  applyManualI18N();
   // Render nav tabs from saved order
   renderNavTabs();
   // Bind sortable headers
