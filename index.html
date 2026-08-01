@@ -404,30 +404,30 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <div id="alertBanner" class="alert-banner"></div>
 <div id="toastContainer"></div>
 <nav class="nav">
-  <div class="nav-brand">金融数据面板</div>
-  <div class="mobile-current-section" id="mobileCurrentSection">全球指数</div>
+  <div class="nav-brand" data-i18n="金融数据面板">金融数据面板</div>
+  <div class="mobile-current-section" id="mobileCurrentSection" data-i18n="全球指数">全球指数</div>
   <div class="nav-tabs">
-    <div class="nav-tab active" data-section="1">全球指数</div>
-    <div class="nav-tab" data-section="2">A股市场热度</div>
-    <div class="nav-tab" data-section="3">A股板块</div>
-    <div class="nav-tab" data-section="4">A股主力资金</div>
-    <div class="nav-tab" data-section="5">自选股票</div>
-    <div class="nav-tab" data-section="7">自选基金板块</div>
-    <div class="nav-tab" data-section="8">自选基金涨跌</div>
-    <div class="nav-tab" data-section="9">贵金属</div>
-    <div class="nav-tab" data-section="6">多股对比</div>
+    <div class="nav-tab active" data-section="1" data-i18n="全球指数">全球指数</div>
+    <div class="nav-tab" data-section="2" data-i18n="A股市场热度">A股市场热度</div>
+    <div class="nav-tab" data-section="3" data-i18n="A股板块">A股板块</div>
+    <div class="nav-tab" data-section="4" data-i18n="A股主力资金">A股主力资金</div>
+    <div class="nav-tab" data-section="5" data-i18n="自选股票">自选股票</div>
+    <div class="nav-tab" data-section="7" data-i18n="自选基金板块">自选基金板块</div>
+    <div class="nav-tab" data-section="8" data-i18n="自选基金涨跌">自选基金涨跌</div>
+    <div class="nav-tab" data-section="9" data-i18n="贵金属">贵金属</div>
+    <div class="nav-tab" data-section="6" data-i18n="多股对比">多股对比</div>
   </div>
   <div class="nav-status">
     <div class="global-search-wrapper" style="position:relative;display:flex;align-items:center;gap:4px">
-      <button id="searchLangBtn" onclick="toggleSearchLang()" title="切换搜索语言：中文 / English" style="background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:5px 6px;border-radius:6px;font-size:11px;cursor:pointer;flex-shrink:0;min-width:30px;line-height:1.2">中</button>
+      <button id="searchLangBtn" onclick="toggleUiLang()" title="切换网页语言：中文 / English" style="background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:5px 6px;border-radius:6px;font-size:11px;cursor:pointer;flex-shrink:0;min-width:30px;line-height:1.2">中</button>
       <input type="text" id="globalSearchInput" placeholder="搜索股票/基金/指数..." style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:6px;font-size:12px;width:200px;transition:width .2s" onfocus="this.style.width='280px';showSearchHistory()" onblur="setTimeout(function(){document.getElementById('globalSearchInput').style.width='200px';hideGlobalSearchResults()},300)" oninput="globalSearch(this.value)">
       <div id="globalSearchResults" style="display:none;position:absolute;top:100%;right:0;margin-top:4px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.3);max-width:400px;max-height:400px;overflow-y:auto;z-index:500"></div>
     </div>
-    <span id="marketStatusA" class="market-badge market-closed">A股未开盘</span>
-    <span id="marketStatusU" class="market-badge market-closed">美股未开盘</span>
+    <span id="marketStatusA" class="market-badge market-closed" data-i18n="A股未开盘">A股未开盘</span>
+    <span id="marketStatusU" class="market-badge market-closed" data-i18n="美股未开盘">美股未开盘</span>
     <span id="refreshIndicator" style="font-size:11px"></span>
     <button class="btn btn-sm" id="themeToggleBtn" onclick="toggleTheme()" title="切换深色/浅色主题">🌙</button>
-    <button class="btn btn-sm" onclick="openSettings()">设置</button>
+    <button class="btn btn-sm" data-i18n="设置" onclick="openSettings()">设置</button>
   </div>
 </nav>
 
@@ -436,24 +436,24 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   <div class="quote-bar" id="quoteBar1"></div>
   <div class="controls">
     <select id="indexSelect" onchange="loadSection1()">
-      <option value="1.000001" selected>上证指数</option>
-      <option value="0.399001">深证成指</option>
-      <option value="0.399006">创业板指</option>
-      <option value="1.000688">科创50</option>
-      <option value="1.000300">沪深300</option>
-      <option value="100.HSI">恒生指数</option>
-      <option value="100.DJIA">道琼斯</option>
-      <option value="100.SPX">标普500</option>
-      <option value="100.NDX">纳斯达克100</option>
-      <option value="100.N225">日经225</option>
-      <option value="100.ks11">韩国综合指数</option>
+      <option value="1.000001" selected data-i18n="上证指数">上证指数</option>
+      <option value="0.399001" data-i18n="深证成指">深证成指</option>
+      <option value="0.399006" data-i18n="创业板指">创业板指</option>
+      <option value="1.000688" data-i18n="科创50">科创50</option>
+      <option value="1.000300" data-i18n="沪深300">沪深300</option>
+      <option value="100.HSI" data-i18n="恒生指数">恒生指数</option>
+      <option value="100.DJIA" data-i18n="道琼斯">道琼斯</option>
+      <option value="100.SPX" data-i18n="标普500">标普500</option>
+      <option value="100.NDX" data-i18n="纳斯达克100">纳斯达克100</option>
+      <option value="100.N225" data-i18n="日经225">日经225</option>
+      <option value="100.ks11" data-i18n="韩国综合指数">韩国综合指数</option>
     </select>
-    <button class="btn btn-sm btn-active" data-klt="intraday" onclick="switchPeriod1(this)">分时</button>
-    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod1(this)">分时K</button>
-    <button class="btn btn-sm" data-klt="101" onclick="switchPeriod1(this)">日K</button>
-    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod1(this)">周K</button>
-    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod1(this)">月K</button>
-    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod1(this)">年K</button>
+    <button class="btn btn-sm btn-active" data-klt="intraday" onclick="switchPeriod1(this)" data-i18n="分时">分时</button>
+    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod1(this)" data-i18n="分时K">分时K</button>
+    <button class="btn btn-sm" data-klt="101" onclick="switchPeriod1(this)" data-i18n="日K">日K</button>
+    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod1(this)" data-i18n="周K">周K</button>
+    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod1(this)" data-i18n="月K">月K</button>
+    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod1(this)" data-i18n="年K">年K</button>
     <span class="indicator-group" style="display:inline-flex;gap:2px;margin-left:6px">
       <button class="btn btn-sm indicator-btn" data-indicator="ma" onclick="toggleIndicator('ma')" title="均线">MA</button>
       <button class="btn btn-sm indicator-btn" data-indicator="macd" onclick="toggleIndicator('macd')">MACD</button>
@@ -461,18 +461,18 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <button class="btn btn-sm indicator-btn" data-indicator="kdj" onclick="toggleIndicator('kdj')">KDJ</button>
       <button class="btn btn-sm indicator-btn" data-indicator="boll" onclick="toggleIndicator('boll')">BOLL</button>
     </span>
-    <button class="btn btn-sm" onclick="exportChartCSV('1')" title="导出当前数据为CSV">导出CSV</button>
+    <button class="btn btn-sm" onclick="exportChartCSV('1')" title="导出当前数据为CSV" data-i18n="导出CSV">导出CSV</button>
     <span class="draw-tools">
       <button class="btn btn-sm" onclick="toggleDrawMode('hline','1')" title="水平线（支撑/阻力位）">📏</button>
       <button class="btn btn-sm" onclick="toggleDrawMode('trend','1')" title="趋势线">📈</button>
       <button class="btn btn-sm" onclick="clearDrawings('1')" title="清除画线">🗑️</button>
     </span>
     <span class="range-tools">
-      <button class="btn btn-xs" onclick="setChartRange('1',22)" title="最近约1个月">1月</button>
-      <button class="btn btn-xs" onclick="setChartRange('1',66)" title="最近约3个月">3月</button>
-      <button class="btn btn-xs" onclick="setChartRange('1',132)" title="最近约6个月">6月</button>
-      <button class="btn btn-xs" onclick="setChartRange('1',250)" title="最近约1年">1年</button>
-      <button class="btn btn-xs" onclick="setChartRange('1',0)" title="全部数据">全部</button>
+      <button class="btn btn-xs" onclick="setChartRange('1',22)" title="最近约1个月" data-i18n="1月">1月</button>
+      <button class="btn btn-xs" onclick="setChartRange('1',66)" title="最近约3个月" data-i18n="3月">3月</button>
+      <button class="btn btn-xs" onclick="setChartRange('1',132)" title="最近约6个月" data-i18n="6月">6月</button>
+      <button class="btn btn-xs" onclick="setChartRange('1',250)" title="最近约1年" data-i18n="1年">1年</button>
+      <button class="btn btn-xs" onclick="setChartRange('1',0)" title="全部数据" data-i18n="全部">全部</button>
     </span>
     <span style="flex:1"></span>
     <span id="lastUpdate1" style="font-size:11px;color:var(--text2)"></span>
@@ -487,16 +487,16 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   <div class="heat-grid" id="heatGrid"></div>
   <div class="two-col">
     <div class="card">
-      <div class="card-title">涨跌家数分布</div>
+      <div class="card-title" data-i18n="涨跌家数分布">涨跌家数分布</div>
       <div id="breadthChart" class="chart-container heat-chart"></div>
     </div>
     <div class="card">
-      <div class="card-title">主要指数实时行情</div>
+      <div class="card-title" data-i18n="主要指数实时行情">主要指数实时行情</div>
       <div id="indexHeatChart" class="chart-container heat-chart"></div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title">板块涨幅排行 <span style="font-size:11px;color:var(--text2);font-weight:400">点击查看详情</span></div>
+    <div class="card-title" data-i18n="板块涨幅排行">板块涨幅排行 <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="点击查看详情">点击查看详情</span></div>
     <div id="sectorRankList" class="sector-list-wrap" style="max-height:300px"></div>
   </div>
   <div style="font-size:11px;color:var(--text2);text-align:right" id="lastUpdate2"></div>
@@ -506,13 +506,13 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <section class="section" id="section3">
   <div class="quote-bar" id="quoteBar3"></div>
   <div class="controls">
-    <select id="sectorSelect3"><option value="">加载中...</option></select>
-    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod3(this)">分时</button>
-    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod3(this)">分时K</button>
-    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod3(this)">日K</button>
-    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod3(this)">周K</button>
-    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod3(this)">月K</button>
-    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod3(this)">年K</button>
+    <select id="sectorSelect3"><option value="" data-i18n="加载中...">加载中...</option></select>
+    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod3(this)" data-i18n="分时">分时</button>
+    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod3(this)" data-i18n="分时K">分时K</button>
+    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod3(this)" data-i18n="日K">日K</button>
+    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod3(this)" data-i18n="周K">周K</button>
+    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod3(this)" data-i18n="月K">月K</button>
+    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod3(this)" data-i18n="年K">年K</button>
     <span class="indicator-group" style="display:inline-flex;gap:2px;margin-left:6px">
       <button class="btn btn-sm indicator-btn" data-indicator="ma" onclick="toggleIndicator('ma')">MA</button>
       <button class="btn btn-sm indicator-btn" data-indicator="macd" onclick="toggleIndicator('macd')">MACD</button>
@@ -520,18 +520,18 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <button class="btn btn-sm indicator-btn" data-indicator="kdj" onclick="toggleIndicator('kdj')">KDJ</button>
       <button class="btn btn-sm indicator-btn" data-indicator="boll" onclick="toggleIndicator('boll')">BOLL</button>
     </span>
-    <button class="btn btn-sm" onclick="exportChartCSV('3')" title="导出CSV">导出CSV</button>
+    <button class="btn btn-sm" onclick="exportChartCSV('3')" title="导出CSV" data-i18n="导出CSV">导出CSV</button>
     <span class="draw-tools">
       <button class="btn btn-sm" onclick="toggleDrawMode('hline','3')" title="水平线">📏</button>
       <button class="btn btn-sm" onclick="toggleDrawMode('trend','3')" title="趋势线">📈</button>
       <button class="btn btn-sm" onclick="clearDrawings('3')" title="清除画线">🗑️</button>
     </span>
     <span class="range-tools">
-      <button class="btn btn-xs" onclick="setChartRange('3',22)" title="最近约1个月">1月</button>
-      <button class="btn btn-xs" onclick="setChartRange('3',66)" title="最近约3个月">3月</button>
-      <button class="btn btn-xs" onclick="setChartRange('3',132)" title="最近约6个月">6月</button>
-      <button class="btn btn-xs" onclick="setChartRange('3',250)" title="最近约1年">1年</button>
-      <button class="btn btn-xs" onclick="setChartRange('3',0)" title="全部数据">全部</button>
+      <button class="btn btn-xs" onclick="setChartRange('3',22)" title="最近约1个月" data-i18n="1月">1月</button>
+      <button class="btn btn-xs" onclick="setChartRange('3',66)" title="最近约3个月" data-i18n="3月">3月</button>
+      <button class="btn btn-xs" onclick="setChartRange('3',132)" title="最近约6个月" data-i18n="6月">6月</button>
+      <button class="btn btn-xs" onclick="setChartRange('3',250)" title="最近约1年" data-i18n="1年">1年</button>
+      <button class="btn btn-xs" onclick="setChartRange('3',0)" title="全部数据" data-i18n="全部">全部</button>
     </span>
     <span style="flex:1"></span>
     <span id="lastUpdate3" style="font-size:11px;color:var(--text2)"></span>
@@ -545,26 +545,26 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <section class="section" id="section4">
   <div class="controls">
     <select id="capitalIndexSelect">
-      <option value="1.000001" selected>上证指数</option>
-      <option value="0.399001">深证成指</option>
-      <option value="0.399006">创业板指</option>
-      <option value="1.000688">科创50</option>
-      <option value="1.000300">沪深300</option>
+      <option value="1.000001" selected data-i18n="上证指数">上证指数</option>
+      <option value="0.399001" data-i18n="深证成指">深证成指</option>
+      <option value="0.399006" data-i18n="创业板指">创业板指</option>
+      <option value="1.000688" data-i18n="科创50">科创50</option>
+      <option value="1.000300" data-i18n="沪深300">沪深300</option>
     </select>
-    <span style="font-size:11px;color:var(--text2)">实时资金流向（今日累计）</span>
+    <span style="font-size:11px;color:var(--text2)" data-i18n="实时资金流向（今日累计）">实时资金流向（今日累计）</span>
     <span style="flex:1"></span>
     <span id="lastUpdate4" style="font-size:11px;color:var(--text2)"></span>
   </div>
   <div class="heat-grid" id="capitalSummary">
-    <div class="heat-metric"><div class="heat-label">加载中...</div></div>
+    <div class="heat-metric"><div class="heat-label" data-i18n="加载中...">加载中...</div></div>
   </div>
   <div class="two-col">
     <div class="card">
-      <div class="card-title">大盘主力资金流向趋势（近30日） <span style="font-size:11px;color:var(--text2);font-weight:400">单位：亿元</span></div>
+      <div class="card-title">大盘主力资金流向趋势（近30日） <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="单位：亿元">单位：亿元</span></div>
       <div id="capitalTrendChart" class="chart-container" style="height:300px"></div>
     </div>
     <div class="card">
-      <div class="card-title">板块资金流向排行 <span style="font-size:11px;color:var(--text2);font-weight:400">主力净流入（亿）</span></div>
+      <div class="card-title">板块资金流向排行 <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="主力净流入（亿）">主力净流入（亿）</span></div>
       <div class="sector-flow-scroll">
         <div id="sectorFlowChart" class="chart-container" style="height:300px"></div>
       </div>
@@ -572,20 +572,20 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   </div>
   <div class="two-col">
     <div class="card">
-      <div class="card-title">个股主力资金净流入 TOP20</div>
+      <div class="card-title" data-i18n="个股主力资金净流入 TOP20">个股主力资金净流入 TOP20</div>
       <div class="sector-list-wrap" style="max-height:420px;overflow-y:auto">
         <table>
-          <thead><tr><th>名称</th><th>代码</th><th>涨跌幅</th><th>主力净流入(亿)</th><th>净占比</th></tr></thead>
-          <tbody id="stockFlowTopIn"><tr><td colspan="5" style="text-align:center;color:var(--text2);padding:20px">加载中...</td></tr></tbody>
+          <thead><tr><th>名称</th><th>代码</th><th>涨跌幅</th><th data-i18n="主力净流入(亿)">主力净流入(亿)</th><th data-i18n="净占比">净占比</th></tr></thead>
+          <tbody id="stockFlowTopIn"><tr><td colspan="5" style="text-align:center;color:var(--text2);padding:20px" data-i18n="加载中...">加载中...</td></tr></tbody>
         </table>
       </div>
     </div>
     <div class="card">
-      <div class="card-title">个股主力资金净流出 TOP20</div>
+      <div class="card-title" data-i18n="个股主力资金净流出 TOP20">个股主力资金净流出 TOP20</div>
       <div class="sector-list-wrap" style="max-height:420px;overflow-y:auto">
         <table>
-          <thead><tr><th>名称</th><th>代码</th><th>涨跌幅</th><th>主力净流出(亿)</th><th>净占比</th></tr></thead>
-          <tbody id="stockFlowTopOut"><tr><td colspan="5" style="text-align:center;color:var(--text2);padding:20px">加载中...</td></tr></tbody>
+          <thead><tr><th>名称</th><th>代码</th><th>涨跌幅</th><th data-i18n="主力净流出(亿)">主力净流出(亿)</th><th data-i18n="净占比">净占比</th></tr></thead>
+          <tbody id="stockFlowTopOut"><tr><td colspan="5" style="text-align:center;color:var(--text2);padding:20px" data-i18n="加载中...">加载中...</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -598,12 +598,12 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   <div class="controls">
     <input type="text" class="filter-box" id="fundFilter7" placeholder="筛选基金..." oninput="filterSelect7()">
     <select id="fundSelect7"></select>
-    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod7(this)">分时</button>
-    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod7(this)">分时K</button>
-    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod7(this)">日K</button>
-    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod7(this)">周K</button>
-    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod7(this)">月K</button>
-    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod7(this)">年K</button>
+    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod7(this)" data-i18n="分时">分时</button>
+    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod7(this)" data-i18n="分时K">分时K</button>
+    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod7(this)" data-i18n="日K">日K</button>
+    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod7(this)" data-i18n="周K">周K</button>
+    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod7(this)" data-i18n="月K">月K</button>
+    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod7(this)" data-i18n="年K">年K</button>
     <span class="indicator-group" style="display:inline-flex;gap:2px;margin-left:6px">
       <button class="btn btn-sm indicator-btn" data-indicator="ma" onclick="toggleIndicator('ma')">MA</button>
       <button class="btn btn-sm indicator-btn" data-indicator="macd" onclick="toggleIndicator('macd')">MACD</button>
@@ -611,18 +611,18 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <button class="btn btn-sm indicator-btn" data-indicator="kdj" onclick="toggleIndicator('kdj')">KDJ</button>
       <button class="btn btn-sm indicator-btn" data-indicator="boll" onclick="toggleIndicator('boll')">BOLL</button>
     </span>
-    <button class="btn btn-sm" onclick="exportChartCSV('7')" title="导出CSV">导出CSV</button>
+    <button class="btn btn-sm" onclick="exportChartCSV('7')" title="导出CSV" data-i18n="导出CSV">导出CSV</button>
     <span class="draw-tools">
       <button class="btn btn-sm" onclick="toggleDrawMode('hline','7')" title="水平线">📏</button>
       <button class="btn btn-sm" onclick="toggleDrawMode('trend','7')" title="趋势线">📈</button>
       <button class="btn btn-sm" onclick="clearDrawings('7')" title="清除画线">🗑️</button>
     </span>
     <span class="range-tools">
-      <button class="btn btn-xs" onclick="setChartRange('7',22)" title="最近约1个月">1月</button>
-      <button class="btn btn-xs" onclick="setChartRange('7',66)" title="最近约3个月">3月</button>
-      <button class="btn btn-xs" onclick="setChartRange('7',132)" title="最近约6个月">6月</button>
-      <button class="btn btn-xs" onclick="setChartRange('7',250)" title="最近约1年">1年</button>
-      <button class="btn btn-xs" onclick="setChartRange('7',0)" title="全部数据">全部</button>
+      <button class="btn btn-xs" onclick="setChartRange('7',22)" title="最近约1个月" data-i18n="1月">1月</button>
+      <button class="btn btn-xs" onclick="setChartRange('7',66)" title="最近约3个月" data-i18n="3月">3月</button>
+      <button class="btn btn-xs" onclick="setChartRange('7',132)" title="最近约6个月" data-i18n="6月">6月</button>
+      <button class="btn btn-xs" onclick="setChartRange('7',250)" title="最近约1年" data-i18n="1年">1年</button>
+      <button class="btn btn-xs" onclick="setChartRange('7',0)" title="全部数据" data-i18n="全部">全部</button>
     </span>
     <span style="flex:1"></span>
     <span id="lastUpdate7" style="font-size:11px;color:var(--text2)"></span>
@@ -646,17 +646,17 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <table class="fund-table">
       <thead>
         <tr>
-          <th>基金名称</th><th>代码</th><th>跟踪指数/板块</th>
-          <th class="sortable" data-sort="nav">最新净值</th>
-          <th class="sortable" data-sort="accNav">累计净值</th>
-          <th>净值日期</th>
+          <th data-i18n="基金名称">基金名称</th><th>代码</th><th data-i18n="跟踪指数/板块">跟踪指数/板块</th>
+          <th class="sortable" data-sort="nav" data-i18n="最新净值">最新净值</th>
+          <th class="sortable" data-sort="accNav" data-i18n="累计净值">累计净值</th>
+          <th data-i18n="净值日期">净值日期</th>
           <th class="sortable" data-sort="navChg">涨跌幅</th>
-          <th class="sortable" data-sort="idxChg">对应指数今日</th>
-          <th>持仓盈亏</th>
+          <th class="sortable" data-sort="idxChg" data-i18n="对应指数今日">对应指数今日</th>
+          <th data-i18n="持仓盈亏">持仓盈亏</th>
         </tr>
       </thead>
       <tbody id="fundTableBody5">
-        <tr><td colspan="9" style="text-align:center;color:var(--text2);padding:20px">加载中...</td></tr>
+        <tr><td colspan="9" style="text-align:center;color:var(--text2);padding:20px" data-i18n="加载中...">加载中...</td></tr>
       </tbody>
     </table>
   </div>
@@ -666,30 +666,30 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <!-- Section 9: 贵金属 -->
 <section class="section" id="section9">
   <div class="heat-grid" id="metalSummary">
-    <div class="heat-metric"><div class="heat-label">加载中...</div></div>
+    <div class="heat-metric"><div class="heat-label" data-i18n="加载中...">加载中...</div></div>
   </div>
   <div class="quote-bar" id="quoteBar7"></div>
   <div class="controls">
     <select id="metalSelect">
       <optgroup label="黄金">
-        <option value="113.aum">沪金主连（国内）</option>
-        <option value="101.GC00Y">COMEX黄金（国际）</option>
+        <option value="113.aum" data-i18n="沪金主连（国内）">沪金主连（国内）</option>
+        <option value="101.GC00Y" data-i18n="COMEX黄金（国际）">COMEX黄金（国际）</option>
       </optgroup>
       <optgroup label="白银">
-        <option value="113.agm">沪银主连（国内）</option>
-        <option value="101.SI00Y">COMEX白银（国际）</option>
+        <option value="113.agm" data-i18n="沪银主连（国内）">沪银主连（国内）</option>
+        <option value="101.SI00Y" data-i18n="COMEX白银（国际）">COMEX白银（国际）</option>
       </optgroup>
       <optgroup label="铜">
-        <option value="113.cum">沪铜主连（国内）</option>
-        <option value="101.HG00Y">COMEX铜（国际）</option>
+        <option value="113.cum" data-i18n="沪铜主连（国内）">沪铜主连（国内）</option>
+        <option value="101.HG00Y" data-i18n="COMEX铜（国际）">COMEX铜（国际）</option>
       </optgroup>
     </select>
-    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod9(this)">分时</button>
-    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod9(this)">分时K</button>
-    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod9(this)">日K</button>
-    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod9(this)">周K</button>
-    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod9(this)">月K</button>
-    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod9(this)">年K</button>
+    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod9(this)" data-i18n="分时">分时</button>
+    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod9(this)" data-i18n="分时K">分时K</button>
+    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod9(this)" data-i18n="日K">日K</button>
+    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod9(this)" data-i18n="周K">周K</button>
+    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod9(this)" data-i18n="月K">月K</button>
+    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod9(this)" data-i18n="年K">年K</button>
     <span class="indicator-group" style="display:inline-flex;gap:2px;margin-left:6px">
       <button class="btn btn-sm indicator-btn" data-indicator="ma" onclick="toggleIndicator('ma')">MA</button>
       <button class="btn btn-sm indicator-btn" data-indicator="macd" onclick="toggleIndicator('macd')">MACD</button>
@@ -697,18 +697,18 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <button class="btn btn-sm indicator-btn" data-indicator="kdj" onclick="toggleIndicator('kdj')">KDJ</button>
       <button class="btn btn-sm indicator-btn" data-indicator="boll" onclick="toggleIndicator('boll')">BOLL</button>
     </span>
-    <button class="btn btn-sm" onclick="exportChartCSV('9')" title="导出CSV">导出CSV</button>
+    <button class="btn btn-sm" onclick="exportChartCSV('9')" title="导出CSV" data-i18n="导出CSV">导出CSV</button>
     <span class="draw-tools">
       <button class="btn btn-sm" onclick="toggleDrawMode('hline','9')" title="水平线">📏</button>
       <button class="btn btn-sm" onclick="toggleDrawMode('trend','9')" title="趋势线">📈</button>
       <button class="btn btn-sm" onclick="clearDrawings('9')" title="清除画线">🗑️</button>
     </span>
     <span class="range-tools">
-      <button class="btn btn-xs" onclick="setChartRange('9',22)" title="最近约1个月">1月</button>
-      <button class="btn btn-xs" onclick="setChartRange('9',66)" title="最近约3个月">3月</button>
-      <button class="btn btn-xs" onclick="setChartRange('9',132)" title="最近约6个月">6月</button>
-      <button class="btn btn-xs" onclick="setChartRange('9',250)" title="最近约1年">1年</button>
-      <button class="btn btn-xs" onclick="setChartRange('9',0)" title="全部数据">全部</button>
+      <button class="btn btn-xs" onclick="setChartRange('9',22)" title="最近约1个月" data-i18n="1月">1月</button>
+      <button class="btn btn-xs" onclick="setChartRange('9',66)" title="最近约3个月" data-i18n="3月">3月</button>
+      <button class="btn btn-xs" onclick="setChartRange('9',132)" title="最近约6个月" data-i18n="6月">6月</button>
+      <button class="btn btn-xs" onclick="setChartRange('9',250)" title="最近约1年" data-i18n="1年">1年</button>
+      <button class="btn btn-xs" onclick="setChartRange('9',0)" title="全部数据" data-i18n="全部">全部</button>
     </span>
     <span style="flex:1"></span>
     <span id="lastUpdate9" style="font-size:11px;color:var(--text2)"></span>
@@ -724,13 +724,13 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   <div class="controls">
     <input type="text" class="filter-box" id="stockFilter5" placeholder="筛选股票..." oninput="filterSelect5()">
     <select id="stockSelect5"></select>
-    <button class="btn btn-sm" id="clearRecentBtn" onclick="clearRecentViews()" title="清除通过搜索查看的临时记录" style="display:none">清空浏览</button>
-    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod5(this)">分时</button>
-    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod5(this)">分时K</button>
-    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod5(this)">日K</button>
-    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod5(this)">周K</button>
-    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod5(this)">月K</button>
-    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod5(this)">年K</button>
+    <button class="btn btn-sm" id="clearRecentBtn" onclick="clearRecentViews()" title="清除通过搜索查看的临时记录" style="display:none" data-i18n="清空浏览">清空浏览</button>
+    <button class="btn btn-sm" data-klt="intraday" onclick="switchPeriod5(this)" data-i18n="分时">分时</button>
+    <button class="btn btn-sm" data-klt="1" onclick="switchPeriod5(this)" data-i18n="分时K">分时K</button>
+    <button class="btn btn-sm btn-active" data-klt="101" onclick="switchPeriod5(this)" data-i18n="日K">日K</button>
+    <button class="btn btn-sm" data-klt="102" onclick="switchPeriod5(this)" data-i18n="周K">周K</button>
+    <button class="btn btn-sm" data-klt="103" onclick="switchPeriod5(this)" data-i18n="月K">月K</button>
+    <button class="btn btn-sm" data-klt="104" onclick="switchPeriod5(this)" data-i18n="年K">年K</button>
     <span class="indicator-group" style="display:inline-flex;gap:2px;margin-left:6px">
       <button class="btn btn-sm indicator-btn" data-indicator="ma" onclick="toggleIndicator('ma')">MA</button>
       <button class="btn btn-sm indicator-btn" data-indicator="macd" onclick="toggleIndicator('macd')">MACD</button>
@@ -738,18 +738,18 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <button class="btn btn-sm indicator-btn" data-indicator="kdj" onclick="toggleIndicator('kdj')">KDJ</button>
       <button class="btn btn-sm indicator-btn" data-indicator="boll" onclick="toggleIndicator('boll')">BOLL</button>
     </span>
-    <button class="btn btn-sm" onclick="exportChartCSV('5')" title="导出CSV">导出CSV</button>
+    <button class="btn btn-sm" onclick="exportChartCSV('5')" title="导出CSV" data-i18n="导出CSV">导出CSV</button>
     <span class="draw-tools">
       <button class="btn btn-sm" onclick="toggleDrawMode('hline','5')" title="水平线">📏</button>
       <button class="btn btn-sm" onclick="toggleDrawMode('trend','5')" title="趋势线">📈</button>
       <button class="btn btn-sm" onclick="clearDrawings('5')" title="清除画线">🗑️</button>
     </span>
     <span class="range-tools">
-      <button class="btn btn-xs" onclick="setChartRange('5',22)" title="最近约1个月">1月</button>
-      <button class="btn btn-xs" onclick="setChartRange('5',66)" title="最近约3个月">3月</button>
-      <button class="btn btn-xs" onclick="setChartRange('5',132)" title="最近约6个月">6月</button>
-      <button class="btn btn-xs" onclick="setChartRange('5',250)" title="最近约1年">1年</button>
-      <button class="btn btn-xs" onclick="setChartRange('5',0)" title="全部数据">全部</button>
+      <button class="btn btn-xs" onclick="setChartRange('5',22)" title="最近约1个月" data-i18n="1月">1月</button>
+      <button class="btn btn-xs" onclick="setChartRange('5',66)" title="最近约3个月" data-i18n="3月">3月</button>
+      <button class="btn btn-xs" onclick="setChartRange('5',132)" title="最近约6个月" data-i18n="6月">6月</button>
+      <button class="btn btn-xs" onclick="setChartRange('5',250)" title="最近约1年" data-i18n="1年">1年</button>
+      <button class="btn btn-xs" onclick="setChartRange('5',0)" title="全部数据" data-i18n="全部">全部</button>
     </span>
     <span style="flex:1"></span>
     <span id="lastUpdate5" style="font-size:11px;color:var(--text2)"></span>
@@ -762,20 +762,20 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <!-- Section 6: Multi-Stock Comparison -->
 <section class="section" id="section6">
   <div class="card">
-    <div class="card-title">多股叠加对比 <span style="font-size:11px;color:var(--text2);font-weight:400">选择 2-5 只股票对比走势（归一化百分比）</span></div>
+    <div class="card-title">多股叠加对比 <span style="font-size:11px;color:var(--text2);font-weight:400" data-i18n="选择 2-5 只股票对比走势（归一化百分比）">选择 2-5 只股票对比走势（归一化百分比）</span></div>
     <div class="compare-controls">
       <select id="compareWatchlistSelect" onchange="addCompareFromWatchlist(this)" style="width:160px">
-        <option value="">从自选添加...</option>
+        <option value="" data-i18n="从自选添加...">从自选添加...</option>
       </select>
       <input type="text" class="filter-box" id="compareSearchInput" placeholder="输入名称或代码搜索..." onkeydown="if(event.key==='Enter')compareSearch()" style="width:200px">
-      <button class="btn btn-sm btn-primary" onclick="compareSearch()">搜索</button>
-      <button class="btn btn-sm" onclick="addAllWatchlistToCompare()" title="将全部自选股票加入对比">全部加入</button>
+      <button class="btn btn-sm btn-primary" onclick="compareSearch()" data-i18n="搜索">搜索</button>
+      <button class="btn btn-sm" onclick="addAllWatchlistToCompare()" title="将全部自选股票加入对比" data-i18n="全部加入">全部加入</button>
       <span style="flex:1"></span>
       <select id="comparePeriod" onchange="loadCompareChart()">
-        <option value="101">日K</option>
-        <option value="102">周K</option>
-        <option value="103">月K</option>
-        <option value="104">年K</option>
+        <option value="101" data-i18n="日K">日K</option>
+        <option value="102" data-i18n="周K">周K</option>
+        <option value="103" data-i18n="月K">月K</option>
+        <option value="104" data-i18n="年K">年K</option>
       </select>
       <button class="btn btn-sm" data-klt="101" onclick="setComparePeriod(this)" style="display:none"></button>
     </div>
@@ -789,16 +789,16 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 <!-- Section 10: 说明书 -->
 <section class="section" id="section10">
   <div class="card" style="max-width:900px;margin:0 auto">
-    <div style="font-size:20px;font-weight:600;margin-bottom:4px;color:var(--text)">金融数据面板 — 使用说明书</div>
+    <div style="font-size:20px;font-weight:600;margin-bottom:4px;color:var(--text)" data-i18n="金融数据面板 — 使用说明书">金融数据面板 — 使用说明书</div>
     <div style="font-size:13px;color:var(--text2);margin-bottom:24px">实时行情 · 自选管理 · 多股对比 · 价格提醒 · 持仓管理 · 定投计划 · 全局搜索 · 基金详情 · K线画线 · 跨设备同步 · 手机适配 · 搜索历史 · 风险指标</div>
 
     <div class="manual-block">
-      <div class="manual-h2">一、这是什么？</div>
+      <div class="manual-h2" data-i18n="一、这是什么？">一、这是什么？</div>
       <p>这是一个纯前端的实时金融数据看板，所有数据来自东方财富 / 腾讯财经 / 新浪财经的公开接口。打开即用，无需注册、无需登录。你只需添加自己关注的股票和基金，即可获得实时行情、K线图表、资金流向等多维度信息。</p>
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">二、九大板块说明</div>
+      <div class="manual-h2" data-i18n="二、九大板块说明">二、九大板块说明</div>
       <table class="manual-table">
         <tr><th style="width:60px">板块</th><th style="width:120px">名称</th><th>功能</th></tr>
         <tr><td>1</td><td>全球指数</td><td>查看全球主要股指（上证、深证、创业板、科创50、沪深300、恒生、道琼斯、标普500、纳斯达克100、日经225、韩国综合指数等）的实时行情与K线走势，支持分时/日K/周K/月K/年K切换。</td></tr>
@@ -814,7 +814,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">三、如何添加自选？</div>
+      <div class="manual-h2" data-i18n="三、如何添加自选？">三、如何添加自选？</div>
       <ol class="manual-ol">
         <li>按 <kbd>S</kbd> 或点击右上角 <strong>设置</strong> 按钮打开设置面板。</li>
         <li>在"自选股票设置"区域，输入股票名称或代码（如 <em>茅台</em> 或 <em>600519</em>），点击搜索，从结果中添加。</li>
@@ -826,7 +826,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">四、键盘快捷键</div>
+      <div class="manual-h2" data-i18n="四、键盘快捷键">四、键盘快捷键</div>
       <table class="manual-table">
         <tr><th style="width:120px">按键</th><th>功能</th></tr>
         <tr><td><kbd>1</kbd> ~ <kbd>9</kbd></td><td>切换到对应板块</td></tr>
@@ -841,12 +841,12 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">五、板块拖拽排序</div>
+      <div class="manual-h2" data-i18n="五、板块拖拽排序">五、板块拖拽排序</div>
       <p>顶部导航栏的 10 个板块标签可以<strong>自由拖拽</strong>交换位置。按住标签拖到目标位置即可，排序会自动保存。</p>
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">六、图表功能</div>
+      <div class="manual-h2" data-i18n="六、图表功能">六、图表功能</div>
       <ul class="manual-ul">
         <li><strong>周期切换：</strong>每个K线板块上方有"分时 / 分时K / 日K / 周K / 月K / 年K"按钮。年K线通过聚合月线数据生成，适合长周期趋势分析。</li>
         <li><strong>技术指标叠加：</strong>K线图上方提供 MA / MACD / KDJ / BOLL / RSI 五种技术指标开关按钮，点击即可叠加/移除，默认为纯K线。指标状态会自动保存并同步到 URL。</li>
@@ -882,7 +882,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">七、价格提醒</div>
+      <div class="manual-h2" data-i18n="七、价格提醒">七、价格提醒</div>
       <ol class="manual-ol">
         <li>打开设置面板，找到"价格提醒"区域。</li>
         <li>从自选股票中选择标的，选择方向（涨到 / 跌到），输入目标价格。</li>
@@ -899,7 +899,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">八、主题切换</div>
+      <div class="manual-h2" data-i18n="八、主题切换">八、主题切换</div>
       <p>支持三种主题模式：<strong>深色</strong>、<strong>浅色</strong>、<strong>跟随系统</strong>。</p>
       <ul class="manual-ul">
         <li>按 <kbd>T</kbd> 键在三种模式间循环切换，或在设置面板的"主题模式"区域选择。</li>
@@ -909,7 +909,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">九、跨设备 / 跨浏览器配置同步</div>
+      <div class="manual-h2" data-i18n="九、跨设备 / 跨浏览器配置同步">九、跨设备 / 跨浏览器配置同步</div>
       <p>这是本面板最重要的特性之一：<strong>你的全部自选配置会自动编码到页面 URL 中</strong>。</p>
       <ul class="manual-ul">
         <li><strong>收藏页面（Ctrl+D）</strong>后，收藏夹中的链接即包含你的全部配置（自选股票、基金、价格提醒、主题、技术指标、板块顺序）。</li>
@@ -922,13 +922,13 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十、自动刷新</div>
+      <div class="manual-h2" data-i18n="十、自动刷新">十、自动刷新</div>
       <p>页面会在后台自动刷新当前板块数据（约每 30 秒）。按 <kbd>R</kbd> 可手动刷新。切换板块时，非活跃板块的图表实例会被释放以节省内存，切回时自动重建。每次创建新 ECharts 实例前会先 dispose 旧实例，防止长时间使用后内存泄漏导致页面卡顿。</p>
       <p style="color:var(--text2);font-size:12px;margin-top:4px">此外，页面加载时多个板块的 API 请求会通过并发控制队列管理，同时最多 4 个 JSONP 请求并发，超出限制的自动排队，避免高峰期被数据源限流。</p>
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十一、数据源与容错</div>
+      <div class="manual-h2" data-i18n="十一、数据源与容错">十一、数据源与容错</div>
       <p>本面板支持三个数据源：<strong>东方财富</strong>、<strong>腾讯财经</strong>、<strong>新浪财经</strong>。默认使用"自动"模式，依次尝试东财→腾讯→新浪，确保数据可用性。</p>
       <ul class="manual-ul">
         <li><strong>自动模式（推荐）：</strong>依次尝试东方财富 → 腾讯财经 → 新浪财经，直到获取到数据为止。</li>
@@ -951,7 +951,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十二、持仓盈亏管理</div>
+      <div class="manual-h2" data-i18n="十二、持仓盈亏管理">十二、持仓盈亏管理</div>
       <p>自选股票和基金均支持记录持仓信息，自动计算盈亏。采用统一的<strong>"当前总仓位"</strong>卡片设计：</p>
       <ul class="manual-ul">
         <li><strong>当前总仓位卡片</strong>显示：持有数量、加权均价、投入金额、笔数。有持仓时实时更新，无持仓时显示"暂无持仓"。</li>
@@ -1042,7 +1042,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十三、手动输入校验</div>
+      <div class="manual-h2" data-i18n="十三、手动输入校验">十三、手动输入校验</div>
       <p>为防止输入错误，手动添加股票和基金时会进行格式校验：</p>
       <ul class="manual-ul">
         <li>股票代码必须为 6 位数字（如 600519）。</li>
@@ -1053,12 +1053,12 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十四、快捷键帮助浮层</div>
+      <div class="manual-h2" data-i18n="十四、快捷键帮助浮层">十四、快捷键帮助浮层</div>
       <p>随时按 <kbd>H</kbd> 键可弹出快捷键速查浮层，列出所有可用快捷键及对应功能。再按一次 <kbd>H</kbd> 或 <kbd>Esc</kbd> 可关闭。</p>
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十五、PWA 离线支持</div>
+      <div class="manual-h2" data-i18n="十五、PWA 离线支持">十五、PWA 离线支持</div>
       <p>本面板支持 PWA（渐进式 Web 应用），可实现离线访问和桌面安装。</p>
       <ul class="manual-ul">
         <li><strong>离线访问：</strong>首次加载后，页面会被 Service Worker 缓存。断网后仍可打开页面查看缓存的界面（实时数据需联网获取）。</li>
@@ -1075,7 +1075,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十六、全局搜索</div>
+      <div class="manual-h2" data-i18n="十六、全局搜索">十六、全局搜索</div>
       <p>页面顶部导航栏右侧有一个<strong>搜索框</strong>（放大镜图标），支持跨市场快速搜索。</p>
       <ul class="manual-ul">
         <li><strong>搜索范围：</strong>同时搜索 A 股股票、港股、美股、指数、板块、基金，结果按类型分组展示。</li>
@@ -1093,7 +1093,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十七、基金详情</div>
+      <div class="manual-h2" data-i18n="十七、基金详情">十七、基金详情</div>
       <p>在自选基金涨跌表格（第8板块）中，每只基金名称旁有<strong>"详情"</strong>链接，点击可弹出基金详情面板。</p>
       <ul class="manual-ul">
         <li><strong>基金概况：</strong>展示基金类型、成立日期、资产规模、基金管理人、托管银行、风险等级、管理费率、业绩比较基准、投资目标等详细信息。</li>
@@ -1113,7 +1113,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十八、手机 / 平板适配</div>
+      <div class="manual-h2" data-i18n="十八、手机 / 平板适配">十八、手机 / 平板适配</div>
       <p>本面板针对手机和平板设备进行了全面的响应式适配，确保在各种屏幕尺寸上都有良好的浏览体验。</p>
       <ul class="manual-ul">
         <li><strong>平板适配（≤768px）：</strong>导航栏自动换行，标签页可横向滚动；图表高度自动缩小（K线最小 400px，热力图 240px）；表格字体和间距压缩；弹窗宽度自适应。</li>
@@ -1124,8 +1124,13 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     </div>
 
     <div class="manual-block">
-      <div class="manual-h2">十九、更新记录</div>
-      <p><strong>2026.8.1（v1.1.7）</strong></p>
+      <div class="manual-h2" data-i18n="十九、更新记录">十九、更新记录</div>
+      <p><strong>2026.8.1（v1.1.8）</strong></p>
+      <ul class="manual-ul">
+        <li><strong>整站中英文切换：</strong>导航栏的「中 / EN」按钮升级为一键切换整个网页语言。所有界面元素（导航标签、按钮、卡片标题、表格表头、图表标题、市场状态、说明书章节标题、Toast 提示等）均支持中英文切换，语言选择自动保存，下次打开保持。说明书正文仍为中文，后续版本可继续补充翻译。</li>
+        <li><strong>修复全局搜索"苹果/Apple"搜不到的问题：</strong>搜索"苹果"时，东方财富接口返回的美股期权衍生品（如"苹果26年10月购10000"）此前被误归类为股票并排在结果前列，真正的"苹果 AAPL"被挤到后面，造成"搜不到"的体验。现已过滤期权/衍生品噪音（TypeUS 13-18、HKDerivative 等），期货保留在"期货"分组末尾。</li>
+      </ul>
+      <p style="margin-top:12px"><strong>2026.8.1（v1.1.7）</strong></p>
       <ul class="manual-ul">
         <li><strong>修复全局搜索结果反复横跳问题：</strong>快速连续输入时，此前较早发出的搜索请求可能晚返回并覆盖新结果，导致列表内容来回跳变。现已增加请求竞态保护（token 机制），只渲染最后一次输入对应的结果，过期请求自动丢弃。</li>
         <li><strong>搜索结果一次性渲染：</strong>股票/指数与基金两个搜索请求改为全部完成后才渲染一次（3 秒兜底），不再分两次插入导致列表跳动；输入新词时立即显示"搜索中..."占位，消除旧结果残留造成的错觉。</li>
@@ -1233,7 +1238,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div id="stockConfigList"></div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
       <input type="text" id="stockSearchInput" placeholder="输入名称或代码搜索（如 茅台 / 600519）" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;flex:1;min-width:200px" onkeydown="if(event.key==='Enter')searchStock()">
-      <button class="btn btn-primary btn-sm" onclick="searchStock()">搜索</button>
+      <button class="btn btn-primary btn-sm" onclick="searchStock()" data-i18n="搜索">搜索</button>
     </div>
     <div id="stockSearchResults" style="margin-top:8px;max-height:200px;overflow-y:auto"></div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
@@ -1248,7 +1253,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div id="fundConfigList"></div>
     <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
       <input type="text" id="fundSearchInput" placeholder="输入基金名称或代码搜索（如 创业板 / 015794）" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;flex:1;min-width:200px" onkeydown="if(event.key==='Enter')searchFund()">
-      <button class="btn btn-primary btn-sm" onclick="searchFund()">搜索</button>
+      <button class="btn btn-primary btn-sm" onclick="searchFund()" data-i18n="搜索">搜索</button>
     </div>
     <div id="fundSearchResults" style="margin-top:8px;max-height:200px;overflow-y:auto"></div>
     <div style="margin-top:12px;display:flex;gap:8px">
@@ -1343,7 +1348,7 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
       <button class="btn btn-sm" onclick="closeFundDetail()" style="padding:2px 8px">×</button>
     </div>
     <div id="fundDetailBody" style="padding:4px 0">
-      <div style="color:var(--text2);font-size:13px;text-align:center;padding:40px">加载中...</div>
+      <div style="color:var(--text2);font-size:13px;text-align:center;padding:40px" data-i18n="加载中...">加载中...</div>
     </div>
   </div>
 </div>
@@ -1377,6 +1382,176 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 </div>
 
 <script>
+/* ==================== i18n: 整站中英文切换 ==================== */
+var _uiLang = 'zh'; // 'zh' | 'en'
+try{ var _savedUi = localStorage.getItem('uiLang'); if(_savedUi === 'zh' || _savedUi === 'en') _uiLang = _savedUi; }catch(e){}
+/* 中文 → 英文 字典（key 为中文原文，value 为英文翻译） */
+var I18N = {
+  /* 品牌 / 导航 */
+  '金融数据面板':'Financial Data Dashboard',
+  '全球指数':'World Indices',
+  'A股市场热度':'A-Share Heat',
+  'A股板块':'A-Share Sectors',
+  'A股主力资金':'A-Share Capital Flow',
+  '自选股票':'My Stocks',
+  '多股对比':'Compare',
+  '自选基金板块':'My Fund Sectors',
+  '自选基金涨跌':'My Fund Movers',
+  '贵金属':'Precious Metals',
+  '说明书':'Manual',
+  'A股未开盘':'A-Share Closed',
+  'A股交易中':'A-Share Open',
+  '美股未开盘':'US Market Closed',
+  '美股交易中':'US Market Open',
+  '设置':'Settings',
+  '导出CSV':'Export CSV',
+  '导出配置':'Export Config',
+  '导入配置':'Import Config',
+  '保存':'Save',
+  '取消':'Cancel',
+  '添加':'Add',
+  '删除':'Delete',
+  '搜索':'Search',
+  '清空':'Clear',
+  '重试':'Retry',
+  '全部':'All',
+  '1月':'1M','3月':'3M','6月':'6M','1年':'1Y',
+  '分时':'Intraday','分时K':'1m K','日K':'Day','周K':'Week','月K':'Month','年K':'Year',
+  '加载中...':'Loading...',
+  '搜索中...':'Searching...',
+  '未找到结果':'No results found',
+  '数据获取失败':'Failed to load data',
+  '更新失败':'Update failed',
+  '已添加':'Added',
+  '加自选':'Watchlist',
+  'K线':'K',
+  /* 指数 */
+  '上证指数':'SSE Composite','深证成指':'SZSE Component','创业板指':'ChiNext','科创50':'STAR 50','沪深300':'CSI 300',
+  '恒生指数':'Hang Seng','道琼斯':'Dow Jones','标普500':'S&P 500','纳斯达克100':'Nasdaq 100','日经225':'Nikkei 225','韩国综合指数':'KOSPI',
+  /* section2 */
+  '涨跌家数分布':'Advancers/Decliners','主要指数实时行情':'Index Realtime','板块涨幅排行':'Sector Gainers','点击查看详情':'click for details',
+  '大盘主力资金流向趋势（近30日）':'Main Capital Flow Trend (30d)','单位：亿元':'Unit: 100M CNY','板块资金流向排行':'Sector Capital Flow Rank',
+  '主力净流入（亿）':'Main Net Inflow (100M)','主力净流入(亿)':'Net Inflow (100M)','主力净流出(亿)':'Net Outflow (100M)','净占比':'Net %',
+  '个股主力资金净流入 TOP20':'Top 20 Net Inflow','个股主力资金净流出 TOP20':'Top 20 Net Outflow',
+  /* tables */
+  '名称':'Name','代码':'Code','涨跌幅':'Change %',
+  '自选基金每日涨跌':'Fund Daily Movers','基金名称':'Fund Name','跟踪指数/板块':'Tracked Index/Sector',
+  '最新净值':'Latest NAV','累计净值':'Cum. NAV','净值日期':'NAV Date','对应指数今日':'Index Today','持仓盈亏':'P/L',
+  '沪金主连（国内）':'SH Gold (CN)','COMEX黄金（国际）':'COMEX Gold','沪银主连（国内）':'SH Silver (CN)','COMEX白银（国际）':'COMEX Silver',
+  '沪铜主连（国内）':'SH Copper (CN)','COMEX铜（国际）':'COMEX Copper',
+  /* section6 */
+  '清空浏览':'Clear History','多股叠加对比':'Multi-Stock Overlay','选择 2-5 只股票对比走势（归一化百分比）':'Select 2-5 stocks to compare (normalized %)',
+  '从自选添加...':'Add from watchlist...','全部加入':'Add All',
+  /* toast 常用 */
+  '主题: ':'Theme: ',
+  '请输入有效价格':'Please enter a valid price',
+  '请先添加股票':'Please add a stock first',
+  '配置已导出':'Config exported',
+  '配置链接已复制到剪贴板！':'Config link copied to clipboard!',
+  '配置链接已复制！':'Config link copied!',
+  '请手动 Ctrl+C 复制链接':'Please copy the link manually (Ctrl+C)',
+  '配置导入成功，正在刷新...':'Import success, refreshing...',
+  '导入失败: 文件格式错误':'Import failed: invalid file format',
+  '请粘贴配置链接':'Please paste the config link',
+  '链接格式不正确，需包含 #cfg= 部分':'Invalid link, must contain #cfg=',
+  '配置恢复成功，正在刷新...':'Config restored, refreshing...',
+  '恢复失败: 链接可能已损坏':'Restore failed: link may be corrupted',
+  '最多对比5只股票':'Max 5 stocks to compare',
+  '自选股票为空，请先在设置中添加':'Watchlist is empty, add stocks in Settings',
+  '自选股票已全部添加或已达上限5只':'All added or limit of 5 reached',
+  '没有浏览记录需要清除':'No browsing history to clear',
+  '暂无可导出的数据':'No data to export',
+  '已导出 ':'Exported ',
+  '未查到历史价格数据':'No historical price data found',
+  '该日期附近无交易数据':'No trading data near this date',
+  '请输入每期投资金额':'Please enter the investment amount',
+  '请选择起始日期':'Please choose a start date',
+  '日期范围内无定投日':'No DCA dates in range',
+  '定投日期过多（超过500），请缩小范围':'Too many DCA dates (>500), narrow the range',
+  '获取历史数据失败：':'Failed to fetch history: ',
+  '未能生成定投记录，请检查日期范围':'Cannot generate DCA records, check date range',
+  '买入':'Buy','减仓':'Reduce','清仓':'Close All','持仓':'Position','收益率':'Return %','成本':'Cost','数量':'Qty','金额':'Amount',
+  '按金额':'By Amount','按手数/份数':'By Lots/Shares','按成本+数量':'Cost + Qty','按金额+收益率':'Amount + Return %',
+  /* 设置面板 */
+  '数据源偏好':'Data Source Preference','自动（东财→腾讯→新浪）':'Auto (EM→TX→Sina)','仅东方财富':'EastMoney only','仅腾讯':'Tencent only','仅新浪':'Sina only',
+  '主题模式':'Theme Mode','深色':'Dark','浅色':'Light','跟随系统':'Follow System',
+  '自选股票设置':'My Stock Settings','自选基金设置':'My Fund Settings','价格提醒':'Price Alerts','通知设置':'Notification Settings',
+  '已保存':'Saved','已删除':'Deleted','已清除':'Cleared',
+  /* 说明书标题 */
+  '一、这是什么？':'1. What is this?',
+  '二、九大板块说明':'2. Module Guide',
+  '三、如何添加自选？':'3. How to Add Watchlist?',
+  '四、键盘快捷键':'4. Keyboard Shortcuts',
+  '五、板块拖拽排序':'5. Drag to Reorder Tabs',
+  '六、图表功能':'6. Chart Features',
+  '七、价格提醒':'7. Price Alerts',
+  '八、主题切换':'8. Theme Switching',
+  '九、跨设备 / 跨浏览器配置同步':'9. Cross-Device Sync',
+  '十、自动刷新':'10. Auto Refresh',
+  '十一、数据源与容错':'11. Data Sources & Fallback',
+  '十二、持仓盈亏管理':'12. Holdings & P/L',
+  '十三、手动输入校验':'13. Manual Input Validation',
+  '十四、快捷键帮助浮层':'14. Shortcut Help Overlay',
+  '十五、PWA 离线支持':'15. PWA Offline Support',
+  '十六、全局搜索':'16. Global Search',
+  '十七、基金详情':'17. Fund Details',
+  '十八、手机 / 平板适配':'18. Mobile / Tablet',
+  '十九、更新记录':'19. Changelog',
+  '金融数据面板 — 使用说明书':'Financial Data Dashboard — User Manual'
+};
+function t(text){ return (_uiLang === 'en' && I18N[text]) ? I18N[text] : text; }
+/* 将字符串中的已知中文短语翻译（用于动态拼接文本） */
+function tStr(str){
+  if(_uiLang !== 'en') return str;
+  var out = str;
+  for(var k in I18N){
+    if(I18N.hasOwnProperty(k) && k.length > 1 && out.indexOf(k) >= 0){
+      out = out.split(k).join(I18N[k]);
+    }
+  }
+  return out;
+}
+/* 应用语言：替换所有 data-i18n 元素的文本 */
+function applyI18N(root){
+  root = root || document;
+  var els = root.querySelectorAll ? root.querySelectorAll('[data-i18n]') : [];
+  for(var i=0;i<els.length;i++){
+    var el = els[i];
+    var key = el.getAttribute('data-i18n');
+    if(key){ el.textContent = t(key); }
+  }
+  var phs = root.querySelectorAll ? root.querySelectorAll('[data-i18n-ph]') : [];
+  for(var j=0;j<phs.length;j++){
+    var p = phs[j];
+    var pkey = p.getAttribute('data-i18n-ph');
+    if(pkey){ p.setAttribute('placeholder', t(pkey)); }
+  }
+}
+function toggleUiLang(){
+  _uiLang = (_uiLang === 'zh') ? 'en' : 'zh';
+  try{ localStorage.setItem('uiLang', _uiLang); }catch(e){}
+  var btn = document.getElementById('searchLangBtn');
+  if(btn) btn.textContent = (_uiLang === 'zh') ? '中' : 'EN';
+  var input = document.getElementById('globalSearchInput');
+  if(input) input.placeholder = (_uiLang === 'zh') ? '搜索股票/基金/指数...' : 'Search stocks/funds/indices...';
+  applyI18N();
+  renderNavTabs();
+  var active = document.querySelector('.section.active');
+  if(active){
+    var num = active.id.replace('section','');
+    if(num==='1') loadSection1();
+    else if(num==='2') loadSection2();
+    else if(num==='3') loadSection3();
+    else if(num==='4') loadSection4();
+    else if(num==='5') loadSection5();
+    else if(num==='6') loadCompareChart();
+    else if(num==='7') loadSection7();
+    else if(num==='8') loadSection8();
+    else if(num==='9'){ loadSection9(); loadMetalSummary(); }
+  }
+  updateMarketStatus();
+}
+
 /* LZString compression library (MIT) */
 var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$",e={};function t(r,o){if(!e[r]){e[r]={};for(var n=0;n<r.length;n++)e[r][r.charAt(n)]=n}return e[r][o]}var i={compressToBase64:function(r){if(null==r)return"";var n=i._compress(r,6,function(r){return o.charAt(r)});switch(n.length%4){default:case 0:return n;case 1:return n+"===";case 2:return n+"==";case 3:return n+"="}},decompressFromBase64:function(r){return null==r?"":""==r?null:i._decompress(r.length,32,function(n){return t(o,r.charAt(n))})},compressToUTF16:function(o){return null==o?"":i._compress(o,15,function(o){return r(o+32)})+" "},decompressFromUTF16:function(r){return null==r?"":""==r?null:i._decompress(r.length,16384,function(o){return r.charCodeAt(o)-32})},compressToUint8Array:function(r){for(var o=i.compress(r),n=new Uint8Array(2*o.length),e=0,t=o.length;e<t;e++){var s=o.charCodeAt(e);n[2*e]=s>>>8,n[2*e+1]=s%256}return n},decompressFromUint8Array:function(o){if(null==o)return i.decompress(o);for(var n=new Array(o.length/2),e=0,t=n.length;e<t;e++)n[e]=256*o[2*e]+o[2*e+1];var s=[];return n.forEach(function(o){s.push(r(o))}),i.decompress(s.join(""))},compressToEncodedURIComponent:function(r){return null==r?"":i._compress(r,6,function(r){return n.charAt(r)})},decompressFromEncodedURIComponent:function(r){return null==r?"":""==r?null:(r=r.replace(/ /g,"+"),i._decompress(r.length,32,function(o){return t(n,r.charAt(o))}))},compress:function(o){return i._compress(o,16,function(o){return r(o)})},_compress:function(r,o,n){if(null==r)return"";var e,t,i,s={},u={},a="",p="",c="",l=2,f=3,h=2,d=[],m=0,v=0;for(i=0;i<r.length;i+=1)if(a=r.charAt(i),Object.prototype.hasOwnProperty.call(s,a)||(s[a]=f++,u[a]=!0),p=c+a,Object.prototype.hasOwnProperty.call(s,p))c=p;else{if(Object.prototype.hasOwnProperty.call(u,c)){if(c.charCodeAt(0)<256){for(e=0;e<h;e++)m<<=1,v==o-1?(v=0,d.push(n(m)),m=0):v++;for(t=c.charCodeAt(0),e=0;e<8;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}else{for(t=1,e=0;e<h;e++)m=m<<1|t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t=0;for(t=c.charCodeAt(0),e=0;e<16;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}0==--l&&(l=Math.pow(2,h),h++),delete u[c]}else for(t=s[c],e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;0==--l&&(l=Math.pow(2,h),h++),s[p]=f++,c=String(a)}if(""!==c){if(Object.prototype.hasOwnProperty.call(u,c)){if(c.charCodeAt(0)<256){for(e=0;e<h;e++)m<<=1,v==o-1?(v=0,d.push(n(m)),m=0):v++;for(t=c.charCodeAt(0),e=0;e<8;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}else{for(t=1,e=0;e<h;e++)m=m<<1|t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t=0;for(t=c.charCodeAt(0),e=0;e<16;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}0==--l&&(l=Math.pow(2,h),h++),delete u[c]}else for(t=s[c],e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;0==--l&&(l=Math.pow(2,h),h++)}for(t=2,e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;for(;;){if(m<<=1,v==o-1){d.push(n(m));break}v++}return d.join("")},decompress:function(r){return null==r?"":""==r?null:i._decompress(r.length,32768,function(o){return r.charCodeAt(o)})},_decompress:function(o,n,e){var t,i,s,u,a,p,c,l=[],f=4,h=4,d=3,m="",v=[],g={val:e(0),position:n,index:1};for(t=0;t<3;t+=1)l[t]=t;for(s=0,a=Math.pow(2,2),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;switch(s){case 0:for(s=0,a=Math.pow(2,8),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;c=r(s);break;case 1:for(s=0,a=Math.pow(2,16),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;c=r(s);break;case 2:return""}for(l[3]=c,i=c,v.push(c);;){if(g.index>o)return"";for(s=0,a=Math.pow(2,d),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;switch(c=s){case 0:for(s=0,a=Math.pow(2,8),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;l[h++]=r(s),c=h-1,f--;break;case 1:for(s=0,a=Math.pow(2,16),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;l[h++]=r(s),c=h-1,f--;break;case 2:return v.join("")}if(0==f&&(f=Math.pow(2,d),d++),l[c])m=l[c];else{if(c!==h)return null;m=i+i.charAt(0)}v.push(m),l[h++]=i+m.charAt(0),i=m,0==--f&&(f=Math.pow(2,d),d++)}}};return i}();"function"==typeof define&&define.amd?define(function(){return LZString}):"undefined"!=typeof module&&null!=module?module.exports=LZString:"undefined"!=typeof angular&&null!=angular&&angular.module("LZString",[]).factory("LZString",function(){return LZString});
 
@@ -1672,7 +1847,7 @@ function showToast(msg, type){
   var container = document.getElementById('toastContainer');
   var div = document.createElement('div');
   div.className = 'toast ' + type;
-  div.textContent = msg;
+  div.textContent = tStr(msg); // i18n: translate known phrases in dynamic messages
   container.appendChild(div);
   setTimeout(function(){
     div.classList.add('fadeout');
@@ -2123,8 +2298,10 @@ function renderNavTabs(){
     tab.dataset.section = num;
     tab.draggable = true;
     var keyHint = num === '10' ? '0' : num;
-    tab.innerHTML = '<span class="tab-key">' + keyHint + '</span> ' + (TAB_NAMES[num] || ('板块'+num));
-    tab.title = '按 ' + keyHint + ' 键切换到' + (TAB_NAMES[num] || ('板块'+num));
+    tab.innerHTML = '<span class="tab-key">' + keyHint + '</span> ' + t(TAB_NAMES[num] || ('板块'+num));
+    tab.title = (_uiLang === 'en')
+      ? 'Press ' + keyHint + ' to switch to ' + t(TAB_NAMES[num] || ('Section '+num))
+      : '按 ' + keyHint + ' 键切换到' + (TAB_NAMES[num] || ('板块'+num));
     tab.addEventListener('click', function(){ switchSection(num); });
     tab.addEventListener('dragstart', onTabDragStart);
     tab.addEventListener('dragover', onTabDragOver);
@@ -2214,7 +2391,7 @@ var __apiRecentResults = []; // track recent results to determine overall status
 
 /* Retry helper: generates HTML with a retry button for error states */
 function retryBtnHTML(sectionNum){
-  return '<button class="btn btn-sm btn-primary" onclick="retrySection(\''+sectionNum+'\')" style="margin-top:8px;font-size:11px">重试</button>';
+  return '<button class="btn btn-sm btn-primary" onclick="retrySection(\''+sectionNum+'\')" style="margin-top:8px;font-size:11px">'+t('重试')+'</button>';
 }
 function retrySection(num){
   _lastRefreshTime[num] = 0; // force reload
@@ -3952,7 +4129,7 @@ function loadSection2(){
   var indexSecids = ['1.000001','0.399001','0.399006','1.000688','1.000300'];
   fetchQuoteBySecid(indexSecids, function(err, items){
     if(err){
-      state.s8.indexChart.setOption({title:{text:'数据源暂不可用，按 R 重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
+      state.s8.indexChart.setOption({title:{text:tStr('数据源暂不可用，按 R 重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
       return;
     }
     var names=[], changes=[], colors=[];
@@ -4012,7 +4189,7 @@ function initSection3(){
   fetchSectorList(function(err, sectors){
     if(err){
       document.getElementById('sectorSelect3').innerHTML = '<option value="">数据源暂不可用，按 R 重试</option>';
-      state.s3.chart.setOption({title:{text:'东方财富API无响应，请稍后重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
+      state.s3.chart.setOption({title:{text:tStr('东方财富API无响应，请稍后重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
       return;
     }
     var sel = document.getElementById('sectorSelect3');
@@ -4053,7 +4230,7 @@ function loadSection3(){
   if(klt === 'intraday'){
     fetchIntraday(secid, function(err, data){
       if(err){
-        state.s3.chart.setOption({title:{text:'数据获取失败，按 R 或点击此重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
+        state.s3.chart.setOption({title:{text:tStr('数据获取失败，按 R 或点击此重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
         document.getElementById('lastUpdate3').textContent = '更新失败: ' + timeStr();
         return;
       }
@@ -4062,7 +4239,7 @@ function loadSection3(){
   } else {
     fetchKLine(secid, klt, 300, function(err, data){
       if(err){
-        state.s3.chart.setOption({title:{text:'数据获取失败，按 R 或点击此重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
+        state.s3.chart.setOption({title:{text:tStr('数据获取失败，按 R 或点击此重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
         document.getElementById('lastUpdate3').textContent = '更新失败: ' + timeStr();
         return;
       }
@@ -4281,7 +4458,7 @@ function renderCompareTags(){
 function renderCompareWatchlist(){
   var sel = document.getElementById('compareWatchlistSelect');
   if(!sel) return;
-  var html = '<option value="">从自选添加...</option>';
+  var html = '<option value="">'+t('从自选添加...')+'</option>';
   stockList.forEach(function(s){
     var alreadyAdded = state.s6.stocks.some(function(c){return c.secid === s.secid});
     if(alreadyAdded) return; // skip already added
@@ -4401,7 +4578,7 @@ function rebuildStockSelect5(){
     sel.innerHTML = '<option value="">请先在设置中添加股票</option>';
     state.s5.chart.setOption({
       backgroundColor:'transparent',
-      title:{text:'暂无自选股票',left:'center',top:'40%',textStyle:{color:tc().text2,fontSize:16,fontWeight:'normal'}},
+      title:{text:tStr('暂无自选股票'),left:'center',top:'40%',textStyle:{color:tc().text2,fontSize:16,fontWeight:'normal'}},
       graphic:{type:'text',left:'center',top:'50%',style:{text:'点击右上角"设置"添加股票',fill:'#8b949e',fontSize:13,textAlign:'center'}}
     });
     var btn1 = document.getElementById('clearRecentBtn'); if(btn1) btn1.style.display = 'none';
@@ -4445,7 +4622,7 @@ function clearRecentViews(){
 
 function loadSection5(){
   if(!stockList[state.s5.stockIdx]){
-    state.s5.chart.setOption({title:{text:'请先添加股票',left:'center',top:'40%',textStyle:{color:tc().text2}}}, true);
+    state.s5.chart.setOption({title:{text:tStr('请先添加股票'),left:'center',top:'40%',textStyle:{color:tc().text2}}}, true);
     return;
   }
   var stock = stockList[state.s5.stockIdx];
@@ -4469,7 +4646,7 @@ function loadSection5(){
       if(err){
         fetchKLine(secid, '101', 300, function(err2, data2){
           if(err2){
-            state.s5.chart.setOption({title:{text:'数据获取失败，按 R 或点击此重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
+            state.s5.chart.setOption({title:{text:tStr('数据获取失败，按 R 或点击此重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
             document.getElementById('lastUpdate5').textContent = '更新失败: ' + timeStr();
             return;
           }
@@ -4482,7 +4659,7 @@ function loadSection5(){
   } else {
     fetchKLine(secid, klt, 300, function(err, data){
       if(err){
-        state.s5.chart.setOption({title:{text:'数据获取失败，按 R 或点击此重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
+        state.s5.chart.setOption({title:{text:tStr('数据获取失败，按 R 或点击此重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
         document.getElementById('lastUpdate5').textContent = '更新失败: ' + timeStr();
         return;
       }
@@ -5887,6 +6064,12 @@ function doGlobalSearch(keyword){
         if(!code || !name) return;
         // Skip US bond notes / warrants (TypeUS 6) — they pollute code searches like "AAPL22"
         if(item.TypeUS == 6 || item.TypeUS == '6') return;
+        // Skip options & derivatives (TypeUS 13-18 / HKDerivative / USOption) — they pollute name searches like "苹果"
+        // (futures TypeUS 19 are kept — they group under 期货 at the end of the list)
+        var tUS = String(item.TypeUS || '');
+        var cls = (item.Classify || item.classify || '');
+        if(tUS === '13' || tUS === '14' || tUS === '15' || tUS === '16' || tUS === '17' || tUS === '18') return;
+        if(cls === 'HKDerivative' || cls === 'USOption' || cls === 'Option' || cls === 'Warrant') return;
         // Prefer the API-provided QuoteID (e.g. "105.AAPL" / "116.00700" / "100.HSI"), fall back to mkt.code
         var secid = item.QuoteID || item.quoteID || (mkt + '.' + code);
         var secType = item.SecurityType || item.securityType;
@@ -6274,7 +6457,7 @@ function loadSection8(){
 /* ==================== Fund Detail Modal ==================== */
 function showFundDetail(fcode, fname){
   document.getElementById('fundDetailTitle').textContent = (fname||'') + ' 详情';
-  document.getElementById('fundDetailBody').innerHTML = '<div style="color:var(--text2);font-size:13px;text-align:center;padding:40px">加载中...</div>';
+  document.getElementById('fundDetailBody').innerHTML = '<div style="color:var(--text2);font-size:13px;text-align:center;padding:40px">'+t('加载中...')+'</div>';
   document.getElementById('fundDetailModal').classList.add('show');
   fetchFundDetail(fcode);
 }
@@ -6698,7 +6881,7 @@ function loadSection4(){
   /* 2. Trend chart - daily history (30 days) */
   fetchCapitalFlowHistory(secid, 30, function(err, hist){
     if(err){
-      state.s4.trendChart.setOption({title:{text:'数据源暂不可用，按 R 重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
+      state.s4.trendChart.setOption({title:{text:tStr('数据源暂不可用，按 R 重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
       return;
     }
     state.s4.trendChart.setOption({
@@ -6729,7 +6912,7 @@ function loadSection4(){
     if(err){
       document.getElementById('sectorFlowChart').style.height = '300px';
       state.s4.sectorFlowChart.resize();
-      state.s4.sectorFlowChart.setOption({title:{text:'数据源暂不可用，按 R 重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
+      state.s4.sectorFlowChart.setOption({title:{text:tStr('数据源暂不可用，按 R 重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}}, true);
       return;
     }
     sectors.sort(function(a,b){return b.mainNet-a.mainNet});
@@ -6872,7 +7055,7 @@ function loadSection9(){
       if(err){
         fetchKLine(secid, '101', 300, function(err2, data2){
           if(err2){
-            state.s9.chart.setOption({title:{text:'数据获取失败，按 R 或点击此重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
+            state.s9.chart.setOption({title:{text:tStr('数据获取失败，按 R 或点击此重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
             document.getElementById('lastUpdate9').textContent = '更新失败: ' + timeStr();
             return;
           }
@@ -6885,7 +7068,7 @@ function loadSection9(){
   } else {
     fetchKLine(secid, klt, 300, function(err, data){
       if(err){
-        state.s9.chart.setOption({title:{text:'数据获取失败，按 R 或点击此重试',left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
+        state.s9.chart.setOption({title:{text:tStr('数据获取失败，按 R 或点击此重试'),left:'center',top:'center',textStyle:{color:tc().text2,fontSize:14,fontWeight:'normal'}}});
         document.getElementById('lastUpdate9').textContent = '更新失败: ' + timeStr();
         return;
       }
@@ -7682,10 +7865,10 @@ function updateMarketStatus(){
 
   var aBadge = document.getElementById('marketStatusA');
   var uBadge = document.getElementById('marketStatusU');
-  if(aOpen){ aBadge.className='market-badge market-open'; aBadge.textContent='A股交易中'; }
-  else { aBadge.className='market-badge market-closed'; aBadge.textContent='A股休市'; }
-  if(uOpen){ uBadge.className='market-badge market-open'; uBadge.textContent='美股交易中'; }
-  else { uBadge.className='market-badge market-closed'; uBadge.textContent='美股休市'; }
+  if(aOpen){ aBadge.className='market-badge market-open'; aBadge.textContent = (_uiLang==='en') ? 'A-Share Open' : 'A股交易中'; }
+  else { aBadge.className='market-badge market-closed'; aBadge.textContent = (_uiLang==='en') ? 'A-Share Closed' : 'A股休市'; }
+  if(uOpen){ uBadge.className='market-badge market-open'; uBadge.textContent = (_uiLang==='en') ? 'US Market Open' : '美股交易中'; }
+  else { uBadge.className='market-badge market-closed'; uBadge.textContent = (_uiLang==='en') ? 'US Market Closed' : '美股休市'; }
 }
 
 /* ==================== Auto Refresh ==================== */
@@ -7776,6 +7959,12 @@ function startAutoRefresh(){
 
 /* ==================== Init ==================== */
 onEchartsReady(function(){
+  // Apply saved UI language (must run before renderNavTabs so tabs render in the right language)
+  var _langBtn = document.getElementById('searchLangBtn');
+  if(_langBtn) _langBtn.textContent = (_uiLang === 'zh') ? '中' : 'EN';
+  var _langInput = document.getElementById('globalSearchInput');
+  if(_langInput) _langInput.placeholder = (_uiLang === 'zh') ? '搜索股票/基金/指数...' : 'Search stocks/funds/indices...';
+  applyI18N();
   // Render nav tabs from saved order
   renderNavTabs();
   // Bind sortable headers
@@ -7795,7 +7984,7 @@ onEchartsReady(function(){
   // Bookmark hint for users who have stocks/funds but haven't bookmarked yet
   if((stockList.length > 0 || fundList.length > 0) && !localStorage.getItem('bookmarkHint')){
     setTimeout(function(){
-      showToast('提示：请按 Ctrl+D 收藏本页，换浏览器或清缓存后打开收藏即可恢复全部自选', 'success');
+      showToast(tStr('提示：请按 Ctrl+D 收藏本页，换浏览器或清缓存后打开收藏即可恢复全部自选'), 'success');
       localStorage.setItem('bookmarkHint','1');
     }, 3000);
   }
