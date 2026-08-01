@@ -418,7 +418,8 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
     <div class="nav-tab" data-section="6">多股对比</div>
   </div>
   <div class="nav-status">
-    <div class="global-search-wrapper" style="position:relative">
+    <div class="global-search-wrapper" style="position:relative;display:flex;align-items:center;gap:4px">
+      <button id="searchLangBtn" onclick="toggleSearchLang()" title="切换搜索语言：中文 / English" style="background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:5px 6px;border-radius:6px;font-size:11px;cursor:pointer;flex-shrink:0;min-width:30px;line-height:1.2">中</button>
       <input type="text" id="globalSearchInput" placeholder="搜索股票/基金/指数..." style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:6px;font-size:12px;width:200px;transition:width .2s" onfocus="this.style.width='280px';showSearchHistory()" onblur="setTimeout(function(){document.getElementById('globalSearchInput').style.width='200px';hideGlobalSearchResults()},300)" oninput="globalSearch(this.value)">
       <div id="globalSearchResults" style="display:none;position:absolute;top:100%;right:0;margin-top:4px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.3);max-width:400px;max-height:400px;overflow-y:auto;z-index:500"></div>
     </div>
@@ -1124,7 +1125,14 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 
     <div class="manual-block">
       <div class="manual-h2">十九、更新记录</div>
-      <p><strong>2026.7.29（v1.1.5）</strong></p>
+      <p><strong>2026.8.1（v1.1.6）</strong></p>
+      <ul class="manual-ul">
+        <li><strong>全局搜索升级：支持全球股票 + 中英文双模式：</strong>搜索范围从 A 股扩展至全球市场（A股/港股/美股/英股/指数/板块/期货/基金），修复指数被误标为"美股"的类型判断错误，新增港股、美股、英股独立分类。</li>
+        <li><strong>中英文搜索模式切换：</strong>搜索框左侧新增「中 / EN」切换按钮，中文模式支持中文名/代码/拼音搜索，英文模式支持英文名/代码搜索（如 Tencent、AAPL、tsla 均可用），英文模式下全球股票结果优先展示。模式选择自动保存，下次打开自动恢复。</li>
+        <li><strong>搜索结果体验优化：</strong>结果行新增市场徽章（沪/深/港/美/英/指/期），一眼识别所属市场；过滤美股债券类噪音结果（如 AAPL22、AAPL24 等 Notes），搜索更精准；设置面板的股票搜索同样放开 A 股限制，支持全球股票添加。</li>
+        <li><strong>数据源容错扩展：</strong>腾讯行情回退（getTencentCode）新增港股（hk 前缀）与美股（us 前缀）支持，新浪回退（getSinaCode）新增美股 106/107 市场支持，全球股票在东方财富不可用时仍可兜底获取行情。</li>
+      </ul>
+      <p style="margin-top:12px"><strong>2026.7.29（v1.1.5）</strong></p>
       <ul class="manual-ul">
         <li><strong>仓位系统全面重构：</strong>移除"按成本"、"买入价"、"数量"等旧版手动输入框和"按成本/按持仓/分批建仓"三种模式下拉选择，统一为"当前总仓位"卡片。买入和减仓功能均采用 Tab 切换设计（按金额 / 按手数·份数），自动获取最新价格并计算。旧的 cost/value/batches 三种模式数据在加载时自动迁移为统一的累计 batches 格式。</li>
         <li><strong>累计记忆功能：</strong>每次买入或定投生成的批次都会累计记录在总仓位中，不会因后续操作而清除旧有记录。只有在用户主动点击"清仓"时才会清空全部持仓。减仓后自动合并剩余仓位为单一批次。</li>
@@ -2954,11 +2962,17 @@ function getTencentCode(secid){
   if(SECID_TO_TENCENT[secid]) return SECID_TO_TENCENT[secid];
   var parts = secid.split('.');
   var mkt = parts[0], code = parts[1];
-  if(!code || code.length !== 6) return null;
+  if(!code) return null;
   // Shanghai stocks: 6xxxxx
   if(mkt === '1' && code.charAt(0) === '6') return 'sh' + code;
   // Shenzhen stocks: 00xxxx or 30xxxx (ChiNext), but not 39xxxx (indices)
   if(mkt === '0' && (code.charAt(0) === '0' || code.substring(0,2) === '30')) return 'sz' + code;
+  // Hong Kong stocks: 116.xxxxx → hkxxxxx
+  if(mkt === '116') return 'hk' + code;
+  // US stocks: 105/106/107.XXX → usXXX
+  if(mkt === '105' || mkt === '106' || mkt === '107') return 'us' + code.toUpperCase();
+  // UK stocks: 155.XXX → ukXXX (fallback chain rarely used for UK)
+  if(mkt === '155') return 'uk' + code;
   return null;
 }
 var KLT_TO_TENCENT = {'101':'day','102':'week','103':'month'};
@@ -2984,8 +2998,8 @@ function getSinaCode(secid){
   if(mkt === '100' && code === 'FTSE') return 'gb_ftse';
   if(mkt === '100' && code === 'GDAXI') return 'gb_dax';
   if(mkt === '100' && code === 'FCHI') return 'gb_cac';
-  // US stocks: 105.xxx → gb_lowercase
-  if(mkt === '105') return 'gb_'+code.toLowerCase();
+  // US stocks: 105/106/107.xxx → gb_lowercase
+  if(mkt === '105' || mkt === '106' || mkt === '107') return 'gb_'+code.toLowerCase();
   // Domestic futures: 113.xxx → nf_ + uppercase (main contract: xM → X0)
   if(mkt === '113'){
     var fc = code.toUpperCase();
@@ -5746,6 +5760,27 @@ function filterSelect5(){
 /* Stock search via East Money suggest API */
 /* ==================== Global Search ==================== */
 var _globalSearchTimer = null;
+/* ---- Search Language Mode (zh / en) ---- */
+var _searchLang = 'zh'; // 'zh' = 中文模式, 'en' = English mode
+try{
+  var _savedLang = localStorage.getItem('searchLang');
+  if(_savedLang === 'zh' || _savedLang === 'en') _searchLang = _savedLang;
+}catch(e){}
+function toggleSearchLang(){
+  _searchLang = (_searchLang === 'zh') ? 'en' : 'zh';
+  try{ localStorage.setItem('searchLang', _searchLang); }catch(e){}
+  var btn = document.getElementById('searchLangBtn');
+  var input = document.getElementById('globalSearchInput');
+  if(btn) btn.textContent = (_searchLang === 'zh') ? '中' : 'EN';
+  if(input) input.placeholder = (_searchLang === 'zh') ? '搜索股票/基金/指数...' : 'Search stocks/funds/indices...';
+  // Re-run current search with the new language mode
+  if(input && input.value.trim()) globalSearch(input.value);
+}
+/* Apply saved language mode on startup */
+(function(){
+  var btn = document.getElementById('searchLangBtn');
+  if(btn) btn.textContent = (_searchLang === 'zh') ? '中' : 'EN';
+})();
 /* ---- Search History ---- */
 function getSearchHistory(){
   try{var s=localStorage.getItem('searchHistory');if(s)return JSON.parse(s)}catch(e){}
@@ -5829,25 +5864,37 @@ function doGlobalSearch(keyword){
         var name = item.Name || item.name;
         var mkt = item.MktNum || item.mktNum || item.Mkt;
         if(!code || !name) return;
-        var secid = mkt + '.' + code;
+        // Skip US bond notes / warrants (TypeUS 6) — they pollute code searches like "AAPL22"
+        if(item.TypeUS == 6 || item.TypeUS == '6') return;
+        // Prefer the API-provided QuoteID (e.g. "105.AAPL" / "116.00700" / "100.HSI"), fall back to mkt.code
+        var secid = item.QuoteID || item.quoteID || (mkt + '.' + code);
         var secType = item.SecurityType || item.securityType;
         var classType = item.Classify || item.classify || '';
+        var secTypeName = item.SecurityTypeName || item.securityTypeName || '';
         var typeName = '股票';
-        if(secType == 5 || secType == 11 || secType == '5' || secType == '11' || classType === 'Index' || classType === '24'){
+        if(secTypeName === '指数' || secType == 11 || secType == '11' || classType === 'Index'){
           typeName = '指数';
-        } else if(secType == 9 || secType == '9' || classType === 'BK'){
+        } else if(secTypeName === '板块' || secType == 9 || secType == '9' || classType === 'BK'){
           typeName = '板块';
-        } else if(secType == 7 || secType == '7' || classType === 'UsStock'){
+        } else if(secTypeName === '美股' || classType === 'UsStock'){
           typeName = '美股';
-        } else if(secType == 8 || secType == '8' || classType === 'Fund'){
+        } else if(secTypeName === '港股' || classType === 'HK'){
+          typeName = '港股';
+        } else if(secTypeName === '基金' || secType == 8 || secType == '8' || classType === 'Fund'){
           typeName = '基金';
-        } else if(secType == 10 || secType == '10' || classType === 'Futures'){
+        } else if(secTypeName === '期货' || secType == 10 || secType == '10' || classType === 'Futures'){
           typeName = '期货';
+        } else if(secTypeName === '英股' || classType === 'LSE'){
+          typeName = '英股';
         }
+        // Market-number based overrides (more reliable than SecurityType)
         if(secid.indexOf('90.') === 0) typeName = '板块';
-        if(secid.indexOf('100.') === 0 || secid.indexOf('107.') === 0) typeName = '美股';
+        if(secid.indexOf('100.') === 0) typeName = '指数';
+        if(secid.indexOf('105.') === 0 || secid.indexOf('106.') === 0 || secid.indexOf('107.') === 0) typeName = '美股';
         if(secid.indexOf('113.') === 0) typeName = '期货';
-        stockResults.push({secid:secid, code:code, name:name, type:typeName, mkt:mkt});
+        if(secid.indexOf('116.') === 0) typeName = '港股';
+        if(secid.indexOf('155.') === 0) typeName = '英股';
+        stockResults.push({secid:secid, code:code, name:name, type:typeName, mkt:mkt, secTypeName:secTypeName});
       });
     }
     stockDone = true;
@@ -5885,7 +5932,10 @@ function renderGlobalSearchResults(results, keyword){
     if(!grouped[r.type]) grouped[r.type] = [];
     grouped[r.type].push(r);
   });
-  var typeOrder = ['指数','股票','板块','基金','美股','期货'];
+  // In English mode, global stocks (US/HK/UK) take priority; in Chinese mode, A-shares first
+  var typeOrder = (_searchLang === 'en')
+    ? ['美股','港股','英股','股票','指数','板块','基金','期货']
+    : ['指数','股票','港股','美股','板块','基金','英股','期货'];
   var html = '';
   typeOrder.forEach(function(type){
     if(!grouped[type] || !grouped[type].length) return;
@@ -5902,11 +5952,11 @@ function renderGlobalSearchResults(results, keyword){
         } else {
           actions = '<a href="javascript:void(0)" onclick="globalSearchAddFund(\''+r.code+'\',\''+escSq(r.name)+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
         }
-      } else if(r.type === '股票' || r.type === '美股'){
+      } else if(r.type === '股票' || r.type === '美股' || r.type === '港股' || r.type === '英股'){
         if(inStocks){
           actions = '<span style="color:#3fb950;font-size:11px">已添加</span>';
         } else {
-          actions = '<a href="javascript:void(0)" onclick="globalSearchAddStock(\''+r.secid+'\',\''+escSq(r.name)+'\',\''+r.code+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
+          actions = '<a href="javascript:void(0)" onclick="globalSearchAddStock(\''+r.secid+'\',\''+escSq(r.name)+'\',\''+r.code+'\',\''+r.type+'\')" style="color:var(--blue);font-size:11px;text-decoration:none">+ 加自选</a>';
         }
       }
       // View K-line link for stocks/indices/sectors
@@ -5914,9 +5964,19 @@ function renderGlobalSearchResults(results, keyword){
       if(r.type !== '基金' && r.secid){
         klineLink = ' <a href="javascript:void(0)" onclick="globalSearchViewKLine(\''+r.secid+'\',\''+escSq(r.name)+'\',\''+r.type+'\')" style="color:var(--text2);font-size:11px;text-decoration:none">K线</a>';
       }
+      // Market badge from secid prefix
+      var mktNum = (r.secid || '').split('.')[0];
+      var mktBadge = '';
+      if(mktNum === '1') mktBadge = '<span style="color:var(--text2);font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">沪</span>';
+      else if(mktNum === '0') mktBadge = '<span style="color:var(--text2);font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">深</span>';
+      else if(mktNum === '116') mktBadge = '<span style="color:#ff7b72;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">港</span>';
+      else if(mktNum === '105' || mktNum === '106' || mktNum === '107') mktBadge = '<span style="color:#58a6ff;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">美</span>';
+      else if(mktNum === '155') mktBadge = '<span style="color:#bc8cff;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">英</span>';
+      else if(mktNum === '100') mktBadge = '<span style="color:#f0a64a;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">指</span>';
+      else if(mktNum === '113') mktBadge = '<span style="color:#3fb950;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">期</span>';
       html += '<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border);cursor:default">'+
         '<span style="color:var(--text);font-size:12px;min-width:80px;flex:1">'+escHtml(r.name)+'</span>'+
-        '<span style="color:var(--text2);font-size:11px">'+escHtml(r.code)+'</span>'+
+        '<span style="display:flex;gap:4px;align-items:center">'+mktBadge+'<span style="color:var(--text2);font-size:11px">'+escHtml(r.code)+'</span></span>'+
         '<span style="margin-left:auto;display:flex;gap:8px">'+klineLink+actions+'</span>'+
         '</div>';
     });
@@ -5929,11 +5989,11 @@ function hideGlobalSearchResults(){
   if(!div) return;
   setTimeout(function(){ div.style.display = 'none'; }, 200);
 }
-function globalSearchAddStock(secid, name, code){
+function globalSearchAddStock(secid, name, code, typeName){
   if(stockList.some(function(s){return s.secid === secid})){ showToast('已在自选中','info'); return; }
   stockList.push({secid:secid, name:name, code:code});
   setStocks(stockList);
-  addSearchHistory({secid:secid, name:name, code:code, type:'股票'});
+  addSearchHistory({secid:secid, name:name, code:code, type:typeName || '股票'});
   showToast('已添加: '+name+' ('+code+')','success');
   document.getElementById('globalSearchInput').value = '';
   hideGlobalSearchResults();
@@ -6014,18 +6074,29 @@ function searchStock(){
       var name = item.Name || item.name;
       var mkt = item.MktNum || item.mktNum || item.Mkt;
       var stype = item.SecurityType || item.securityType;
-      // Filter: only A-share stocks (type=1 or code starts with 0/3/6)
+      var classType = item.Classify || item.classify || '';
+      var secTypeName = item.SecurityTypeName || item.securityTypeName || '';
+      // No longer restricted to A-shares — global stocks allowed
       if(!code || !name) return;
-      if(stype && stype !== 1 && stype !== '1') return;
-      var secid = mkt + '.' + code;
+      var secid = item.QuoteID || item.quoteID || (mkt + '.' + code);
       var alreadyAdded = stockList.some(function(s){return s.secid === secid});
+      // Market badge from secid prefix
+      var mktNum = (secid || '').split('.')[0];
+      var mktBadge = '';
+      if(mktNum === '1') mktBadge = '<span style="color:var(--text2);font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">沪</span>';
+      else if(mktNum === '0') mktBadge = '<span style="color:var(--text2);font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">深</span>';
+      else if(mktNum === '116') mktBadge = '<span style="color:#ff7b72;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">港</span>';
+      else if(mktNum === '105' || mktNum === '106' || mktNum === '107') mktBadge = '<span style="color:#58a6ff;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">美</span>';
+      else if(mktNum === '155') mktBadge = '<span style="color:#bc8cff;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">英</span>';
+      else if(mktNum === '100') mktBadge = '<span style="color:#f0a64a;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">指</span>';
+      else if(mktNum === '113') mktBadge = '<span style="color:#3fb950;font-size:10px;border:1px solid var(--border);border-radius:3px;padding:0 3px">期</span>';
       html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;margin-bottom:4px;'+(alreadyAdded?'':'cursor:pointer')+'"'+(alreadyAdded?'':' onclick="addStockFromSearch(\''+secid+'\',\''+escSq(name)+'\',\''+code+'\')"')+'>'+
         '<span style="color:var(--text);font-size:12px;min-width:80px">'+escHtml(name)+'</span>'+
-        '<span style="color:var(--text2);font-size:11px">'+escHtml(code)+'</span>'+
+        '<span style="display:flex;gap:4px;align-items:center">'+mktBadge+'<span style="color:var(--text2);font-size:11px">'+escHtml(code)+'</span></span>'+
         '<span style="margin-left:auto;font-size:11px;color:'+(alreadyAdded?'var(--text2)':'var(--blue)')+'">'+(alreadyAdded?'\u5df2\u6dfb\u52a0':'+ \u6dfb\u52a0')+'</span>'+
         '</div>';
     });
-    if(!html) html = '<div style="color:var(--text2);padding:8px">\u672a\u627e\u5230A\u80a1\u80a1\u7968\uff0c\u8bf7\u624b\u52a8\u6dfb\u52a0</div>';
+    if(!html) html = '<div style="color:var(--text2);padding:8px">\u672a\u627e\u5230\u7ed3\u679c\uff0c\u8bf7\u624b\u52a8\u6dfb\u52a0</div>';
     resultsDiv.innerHTML = html;
   });
 }
