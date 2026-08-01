@@ -1125,7 +1125,12 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 
     <div class="manual-block">
       <div class="manual-h2">十九、更新记录</div>
-      <p><strong>2026.8.1（v1.1.6）</strong></p>
+      <p><strong>2026.8.1（v1.1.7）</strong></p>
+      <ul class="manual-ul">
+        <li><strong>修复全局搜索结果反复横跳问题：</strong>快速连续输入时，此前较早发出的搜索请求可能晚返回并覆盖新结果，导致列表内容来回跳变。现已增加请求竞态保护（token 机制），只渲染最后一次输入对应的结果，过期请求自动丢弃。</li>
+        <li><strong>搜索结果一次性渲染：</strong>股票/指数与基金两个搜索请求改为全部完成后才渲染一次（3 秒兜底），不再分两次插入导致列表跳动；输入新词时立即显示"搜索中..."占位，消除旧结果残留造成的错觉。</li>
+      </ul>
+      <p style="margin-top:12px"><strong>2026.8.1（v1.1.6）</strong></p>
       <ul class="manual-ul">
         <li><strong>全局搜索升级：支持全球股票 + 中英文双模式：</strong>搜索范围从 A 股扩展至全球市场（A股/港股/美股/英股/指数/板块/期货/基金），修复指数被误标为"美股"的类型判断错误，新增港股、美股、英股独立分类。</li>
         <li><strong>中英文搜索模式切换：</strong>搜索框左侧新增「中 / EN」切换按钮，中文模式支持中文名/代码/拼音搜索，英文模式支持英文名/代码搜索（如 Tencent、AAPL、tsla 均可用），英文模式下全球股票结果优先展示。模式选择自动保存，下次打开自动恢复。</li>
@@ -5845,18 +5850,34 @@ function doGlobalSearch(keyword){
   var stockDone = false, fundDone = false;
   var stockResults = [], fundResults = [];
   var renderTimer = null;
+  // Race-condition guard: only the latest search request may render.
+  // Each new doGlobalSearch increments the token; stale responses are ignored.
+  var token = (doGlobalSearch._token = (doGlobalSearch._token || 0) + 1);
 
-  /* Progressive render: show whichever results are ready, merge when both complete */
-  function scheduleRender(){
+  /* Render once — either both requests finished, or the 3s fallback fired.
+     Never re-render for stale responses (token mismatch). */
+  function renderOnce(){
+    if(token !== doGlobalSearch._token) return; // stale request — drop
     if(renderTimer) clearTimeout(renderTimer);
-    renderTimer = setTimeout(function(){
-      renderTimer = null;
-      renderGlobalSearchResults(stockResults.concat(fundResults), keyword);
-    }, 30);
+    renderTimer = null;
+    renderGlobalSearchResults(stockResults.concat(fundResults), keyword);
+  }
+  function scheduleRender(){
+    // Only render when BOTH sources are done, to avoid list "jumping"
+    if(!(stockDone && fundDone)) return;
+    if(renderTimer) clearTimeout(renderTimer);
+    renderTimer = setTimeout(renderOnce, 30);
+  }
+
+  /* Show a transient "searching" placeholder immediately (if we're still the latest) */
+  if(token === doGlobalSearch._token){
+    resultsDiv.innerHTML = '<div style="padding:12px;color:var(--text2);font-size:12px">\u641c\u7d22\u4e2d...</div>';
+    resultsDiv.style.display = 'block';
   }
 
   /* Stock/indices/sectors search — fires in parallel with fund search */
   jsonp('https://searchapi.eastmoney.com/api/suggest/get?input='+encodeURIComponent(keyword)+'&type=14&token=4f186f0b8e2a4a1c8c5a5e5e5e5e5e5e&count=10', 'cb', function(err, data){
+    if(token !== doGlobalSearch._token) return; // stale — ignore
     if(!err && data){
       var items = data.Data || (data.QuotationCodeTable && data.QuotationCodeTable.Data) || [];
       items.forEach(function(item){
@@ -5903,6 +5924,7 @@ function doGlobalSearch(keyword){
 
   /* Fund search — fires in parallel, no longer waits for stock search */
   jsonp('https://fundmobapi.eastmoney.com/FundMSearchApi/FundMSearch?m=0&key='+encodeURIComponent(keyword)+'&deviceid=1&plat=Android&appType=ttjj&product=EFund&Version=1', 'callback', function(ferr, fdata){
+    if(token !== doGlobalSearch._token) return; // stale — ignore
     if(!ferr && fdata && fdata.Datas){
       fdata.Datas.forEach(function(f){
         fundResults.push({secid:'', code:f.FCODE||f.code, name:f.NAME||f.name||f.SHORTNAME, type:'基金', mkt:0, fundCode:f.FCODE||f.code});
@@ -5912,12 +5934,13 @@ function doGlobalSearch(keyword){
     scheduleRender();
   });
 
-  /* Fallback: if neither API responds in 5s, show "no results" */
+  /* Fallback: if either API hangs, force-render whatever we have after 3s */
   setTimeout(function(){
-    if(!stockDone && !fundDone){
-      renderGlobalSearchResults([], keyword);
+    if(token !== doGlobalSearch._token) return; // stale — ignore
+    if(!(stockDone && fundDone)){
+      renderOnce();
     }
-  }, 5000);
+  }, 3000);
 }
 function renderGlobalSearchResults(results, keyword){
   var div = document.getElementById('globalSearchResults');
