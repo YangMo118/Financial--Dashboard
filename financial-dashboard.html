@@ -1143,7 +1143,14 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
 
     <div class="manual-block">
       <div class="manual-h2" data-i18n="二十、更新记录">二十、更新记录</div>
-      <p><strong>2026.8.2（v1.2.1）</strong></p>
+      <p><strong>2026.8.5（v1.2.2）</strong></p>
+      <ul class="manual-ul">
+        <li><strong>修复数据不一致问题：</strong>腾讯 / 新浪回退源的历史K线缺少"昨收价"字段，导致涨跌幅、持仓盈亏与东财口径不一致（同一股票不同时间看到的数值可能不同）；现自动从实时行情接口补齐昨收价，三个数据源涨跌幅计算统一。</li>
+        <li><strong>修复新浪K线日期缺失年份：</strong>新浪回退源的K线日期只显示"月-日"，跨年数据（12 月与次年 1 月）显示混乱且与东财格式不一致；现统一为完整"年-月-日"。</li>
+        <li><strong>持仓 / 定投计算缓存刷新：</strong>历史价格内存缓存增加 5 分钟有效期，交易时段内持仓盈亏、定投回算不再使用过期价格。</li>
+        <li><strong>清理死代码与命名：</strong>删除未使用的 fetchQuote 函数（缺小数参数，误用会显示放大 100 倍的价格）；自动刷新强制刷新函数改名，避免与全局刷新函数重名混淆。</li>
+      </ul>
+      <p style="margin-top:12px"><strong>2026.8.2（v1.2.1）</strong></p>
       <ul class="manual-ul">
         <li><strong>说明书新增「支持开发者」章节：</strong>在「手机 / 平板适配」之后新增第 19 章，展示支付宝、微信收款码，配文「你们的支持就是对开发者最大的鼓励」；原「更新记录」顺延为第 20 章，方便新老用户都能看到支持入口。</li>
       </ul>
@@ -1538,7 +1545,14 @@ th.sortable.desc::after{content:' ↓';opacity:1;color:var(--blue)}
   </div>
   <div class="manual-block">
     <div class="manual-h2">20. Changelog</div>
-    <p><strong>2026.8.2 (v1.2.1)</strong></p>
+    <p><strong>2026.8.5 (v1.2.2)</strong></p>
+    <ul class="manual-ul">
+      <li><strong>Fixed inconsistent data across sources:</strong> Tencent/Sina fallback K-lines were missing the previous-close field, so change % and holdings P/L could differ from the Eastmoney view (the same stock could show different values at different times). The previous close is now fetched from the quote API and attached automatically, unifying change % math across all three sources.</li>
+      <li><strong>Fixed Sina K-line dates missing the year:</strong> Sina fallback dates showed only MM-DD, garbling year-crossing data and differing from the Eastmoney format; now unified to full YYYY-MM-DD.</li>
+      <li><strong>Holdings/DCA cache freshness:</strong> the in-memory historical-price cache now expires after 5 minutes, so intraday holdings P/L and DCA backfills no longer use stale prices.</li>
+      <li><strong>Cleanup:</strong> removed the unused fetchQuote dead code (missing decimal flags — would render 100x prices if ever called); renamed the auto-refresh force function to avoid clashing with the global refresh function.</li>
+    </ul>
+    <p style="margin-top:12px"><strong>2026.8.2 (v1.2.1)</strong></p>
     <ul class="manual-ul">
       <li><strong>New "Support the Developer" chapter:</strong> added as the 19th section right after Mobile / Tablet, showing Alipay and WeChat Pay QR codes with the message "Your support is the greatest encouragement for the developer." The "Changelog" section moves to 20th so the support entry is easy to find for both new and returning users.</li>
     </ul>
@@ -3686,7 +3700,7 @@ function fetchKLineSina(secid, klt, lmt, cb){
     if(data.length < 2){ cb(new Error('新浪数据太少')); return; }
     var dates=[], ohlc=[], volumes=[], closes=[];
     data.forEach(function(k){
-      dates.push(k.day ? k.day.substring(5) : '');
+      dates.push(k.day ? k.day.substring(0, 10) : '');
       var open=parseFloat(k.open), close=parseFloat(k.close), high=parseFloat(k.high), low=parseFloat(k.low);
       ohlc.push([open, close, low, high]);
       closes.push(close);
@@ -3705,7 +3719,7 @@ function fetchKLineSina(secid, klt, lmt, cb){
           lo=Math.min(lo, parseFloat(d.low));
           vol += parseInt(d.volume)||0;
         });
-        wDates.push(chunk[0].day ? chunk[0].day.substring(5) : '');
+        wDates.push(chunk[0].day ? chunk[0].day.substring(0, 10) : '');
         wOhlc.push([o, c, lo, hi]);
         wVol.push(vol);
         wCloses.push(c);
@@ -4081,7 +4095,7 @@ function fetchKLine(secid, klt, lmt, _cb){
           cb(null, cached); return;
         }
       }
-      cb(null, data2);
+      ensurePreClose(data2, secid, function(d){ cb(null, d); });
     });
   }
 
@@ -4092,7 +4106,18 @@ function fetchKLine(secid, klt, lmt, _cb){
         var cached = getKLineCache(secid, fetchKlt);
         if(cached && cached.dates.length > data3.dates.length){ cb(null, cached); return; }
       }
-      cb(null, data3);
+      ensurePreClose(data3, secid, function(d){ cb(null, d); });
+    });
+  }
+
+  /* Tencent/Sina K-line payloads lack preClose; attach the actual previous close from the
+     quote API so change% / holdings P&L stay consistent with the Eastmoney (fqt=1) view.
+     Fails silently — renderers fall back to closes[len-2] when preClose is absent. */
+  function ensurePreClose(data, secid, done){
+    if(!data || data.preClose || !data.closes || data.closes.length === 0){ done(data); return; }
+    fetchQuoteBySecid([secid], function(qErr, items){
+      if(!qErr && items && items[0] && items[0].f18) data.preClose = items[0].f18;
+      done(data);
     });
   }
 
@@ -4181,40 +4206,6 @@ function fetchIntraday(secid, cb){
     trySina(function(e){ tryTencent(function(e2){ tryEastmoney(function(e3){ cb(e3||e2||e); }); }); });
   } else {
     tryEastmoney(function(e){ tryTencent(function(e2){ trySina(function(e3){ cb(e3||e2||e); }); }); });
-  }
-}
-
-function fetchQuote(secids, cb){
-  if(!Array.isArray(secids)) secids = [secids];
-  var pref = (typeof dataSourcePref !== 'undefined') ? dataSourcePref : 'auto';
-  var url = 'https://push2delay.eastmoney.com/api/qt/ulist.np/get?fields=f1,f2,f3,f4,f5,f6,f7,f8,f10,f12,f14,f15,f16,f17,f18,f62&secids='+secids.join(',');
-  function tryEM(next){
-    jsonp(url, 'cb', function(err, data){
-      if(err||!data||!data.data){ next(err||new Error('无行情')); return; }
-      cb(null, data.data);
-    });
-  }
-  function tryTencent(next){
-    fetchQuoteTencent(secids, function(err, results){
-      if(err){ next(err); return; }
-      // Wrap to match eastmoney diff format
-      cb(null, {diff: results, _source: 'tencent'});
-    });
-  }
-  function trySina(next){
-    fetchQuoteSina(secids, function(err, items){
-      if(err || !items || !items.length){ next(err||new Error('新浪无行情')); return; }
-      cb(null, {diff: items, _source: 'sina'});
-    });
-  }
-  if(pref === 'tencent'){
-    tryTencent(function(e){ trySina(function(e3){ tryEM(function(e2){ cb(e2||e3||e); }); }); });
-  } else if(pref === 'eastmoney'){
-    tryEM(function(e){ tryTencent(function(e2){ trySina(function(e3){ cb(e3||e2||e); }); }); });
-  } else if(pref === 'sina'){
-    trySina(function(e){ tryEM(function(e2){ tryTencent(function(e3){ cb(e3||e2||e); }); }); });
-  } else {
-    tryEM(function(e){ tryTencent(function(e2){ trySina(function(e3){ cb(e3||e2||e); }); }); });
   }
 }
 
@@ -5118,8 +5109,10 @@ function loadSection5(){
 
 /* ==================== Batch holdings: multi-buy cost averaging ==================== */
 
-/* Historical price cache: { 'stock_<secid>_101': klineData, 'fund_<code>': navDatas } */
+/* Historical price cache: { 'stock_<secid>_101': {ts, data}, 'fund_<code>': {ts, data} }
+   Entries expire after 5 minutes so intraday holdings/DCA math doesn't use stale closes. */
 var __histPriceCache = {};
+var HIST_PRICE_CACHE_TTL = 5 * 60 * 1000;
 
 /* Fetch full historical price map for a stock or fund (cached) */
 function fetchHistPriceMap(type, idx, cb){
@@ -5127,24 +5120,26 @@ function fetchHistPriceMap(type, idx, cb){
     var s = stockList[idx];
     if(!s || !s.secid){ cb('无效的股票'); return; }
     var cacheKey = 'stock_'+s.secid+'_101';
-    if(__histPriceCache[cacheKey]){
-      cb(null, buildPriceMapFromKLine(__histPriceCache[cacheKey])); return;
+    var cachedEntry = __histPriceCache[cacheKey];
+    if(cachedEntry && cachedEntry.data && (Date.now() - cachedEntry.ts < HIST_PRICE_CACHE_TTL)){
+      cb(null, buildPriceMapFromKLine(cachedEntry.data)); return;
     }
     fetchKLine(s.secid, '101', 500, function(err, data){
       if(err || !data || !data.dates || !data.dates.length){ cb(err||'无历史数据'); return; }
-      __histPriceCache[cacheKey] = data;
+      __histPriceCache[cacheKey] = {ts: Date.now(), data: data};
       cb(null, buildPriceMapFromKLine(data));
     });
   } else {
     var f = fundList[idx];
     if(!f || !f.code){ cb('无效的基金'); return; }
     var cacheKey2 = 'fund_'+f.code;
-    if(__histPriceCache[cacheKey2]){
-      cb(null, buildPriceMapFromNAV(__histPriceCache[cacheKey2])); return;
+    var cachedEntry2 = __histPriceCache[cacheKey2];
+    if(cachedEntry2 && cachedEntry2.data && (Date.now() - cachedEntry2.ts < HIST_PRICE_CACHE_TTL)){
+      cb(null, buildPriceMapFromNAV(cachedEntry2.data)); return;
     }
     jsonp('https://fundmobapi.eastmoney.com/FundMNewApi/FundMNHisNetList?FCODE='+f.code+'&pagesize=500&deviceid=1&plat=Android&appType=ttjj&product=EFund&Version=1', 'callback', function(err, data){
       if(err || !data || !data.Datas || !data.Datas.length){ cb(err||'无历史数据'); return; }
-      __histPriceCache[cacheKey2] = data.Datas;
+      __histPriceCache[cacheKey2] = {ts: Date.now(), data: data.Datas};
       cb(null, buildPriceMapFromNAV(data.Datas));
     });
   }
@@ -8383,8 +8378,9 @@ function startAutoRefresh(){
   // Market status: 30s
   refreshTimers.push(setInterval(updateMarketStatus, 30000));
 
-  // Force-refresh the active section (used by visibilitychange & API recovery)
-  function refreshActiveSection(){
+  // Force-refresh the active section (used by visibilitychange & API recovery).
+  // Named distinctly from the throttled global refreshActiveSection() (R key).
+  function forceRefreshActiveSection(){
     var num = _activeSection;
     if(num==='1') loadSection1();
     else if(num==='2') loadSection2();
@@ -8403,7 +8399,7 @@ function startAutoRefresh(){
       // Reset throttle timers so refresh happens immediately
       _lastRefreshTime = {};
       _loadingSection = {};
-      refreshActiveSection();
+      forceRefreshActiveSection();
     }
   });
 
@@ -8418,7 +8414,7 @@ function startAutoRefresh(){
           _lastRefreshTime = {};
           _loadingSection = {};
           showApiBanner(null);
-          refreshActiveSection();
+          forceRefreshActiveSection();
         }
       });
     }

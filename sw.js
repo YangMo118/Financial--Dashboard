@@ -4,7 +4,7 @@
 //   - Static assets (JS/CSS/icons): cache-first, background update (fast load)
 //   - API requests: network-first, short cache fallback (fresh data preferred)
 
-var CACHE_VERSION = 'fin-dashboard-v1-2-1';
+var CACHE_VERSION = 'fin-dashboard-v1-2-2';
 var CACHE_STATIC = CACHE_VERSION + '-static';
 var CACHE_RUNTIME = CACHE_VERSION + '-runtime';
 
